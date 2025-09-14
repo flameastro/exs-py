@@ -3835,7 +3835,7 @@ if __name__ == "__main__":
     print(separa_vogais_consoantes("A matemática é incrível!"))  # (['a', 'a', 'e', 'á', 'i', 'a', 'é', 'i', 'í', 'e'], ['m', 't', 'm', 't', 'c', 'n', 'c', 'r', 'v', 'l'])
 
 
-# Crie uma função que calcula porcentagens
+# ex205: Crie uma função que calcula porcentagens
 def calcula_porcentagem(x, y):
     return f"{x}% de {y} é {x * y / 100}"
 
@@ -3844,3 +3844,45 @@ if __name__ == "__main__":
     print(calcula_porcentagem(25, 150))  # 25% de 150 é 37.5
     print(calcula_porcentagem(35, 890))  # 35% de 890 é 311.5
     print(calcula_porcentagem(78, 964))  # 78% de 964 é 751.92
+
+
+# ex206: Given an array of integers, return the element that appears only once in the array.
+def unic(arr):
+    return [n for n in arr if arr.count(n) == 1][-1]
+
+
+if __name__ == "__main__":
+    print(unic([15, 15, 15, 12]))  # 12
+    print(unic([3, 3, 3, 2, 3, 3]))  # 2
+    print(unic([25, 12, 12, 12, 12, 12]))  # 25
+
+
+# ex207 :Create a function with two arguments that will return an array of the first n multiples of x. Assume both the given number and the number of times to count will be positive numbers greater than 0. Return the results as an array or list ( depending on language ).
+# Examples
+# x = 1, n = 10 --> [1,2,3,4,5,6,7,8,9,10]
+# x = 2, n = 5  --> [2,4,6,8,10]
+def count_by(x, n):
+    return [d for d in range(x, n * x+1, x)]
+
+if __name__ == "__main__":
+    print(count_by(1, 10))  # [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    print(count_by(2, 5))  # [2, 4, 6, 8, 10]
+    print(count_by(50, 5))  # [50, 100, 150, 200, 250]
+
+
+# ex208: Take 2 strings s1 and s2 including only letters from a to z. Return a new sorted string (alphabetical ascending), the longest possible, containing distinct letters - each taken only once - coming from s1 or s2.
+# Examples:
+# a = "xyaabbbccccdefww"
+# b = "xxxxyyyyabklmopq"
+# longest(a, b) -> "abcdefklmopqwxy"
+
+# a = "abcdefghijklmnopqrstuvwxyz"
+# longest(a, a) -> "abcdefghijklmnopqrstuvwxyz"
+def longest(a1, a2):
+    return "".join(sorted(set(a1 + a2)))
+
+
+if __name__ == "__main__":
+    print(longest("dosadsakd", "djasldk"))  # adjklos
+    print(longest("xyaabbbccccdefww", "xxxxyyyyabklmopq"))  # abcdefklmopqwxy
+    print(longest("abcdefghijklmnopqrstuvwxyz", "abcdefghijklmnopqrstuvwxyz"))  # abcdefghijklmnopqrstuvwxyz
