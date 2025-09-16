@@ -3886,3 +3886,254 @@ if __name__ == "__main__":
     print(longest("dosadsakd", "djasldk"))  # adjklos
     print(longest("xyaabbbccccdefww", "xxxxyyyyabklmopq"))  # abcdefklmopqwxy
     print(longest("abcdefghijklmnopqrstuvwxyz", "abcdefghijklmnopqrstuvwxyz"))  # abcdefghijklmnopqrstuvwxyz
+
+
+# ex209: Efetue o cálculo da quantidade de litros de combustível gastos durante uma viagem. Considere: distancia = tempo * velocidade. litros = distancia / 12
+tempo = int(input("Digite o tempo da viagem em horas: "))
+velocidade = int(input("Digite a velocidade da viagem em km/h: "))
+
+distancia = tempo * velocidade
+litros = distancia / 12
+
+print(f"Distância percorrida: {distancia}")
+print(f"O total de litros gastos foram {litros}.")
+
+
+# ex210: Efetue cálculo e apresente o valor de uma prestação de um bem em atraso, utilizando a forma PRESTAÇÃO = VALOR + (VALOR * (TAXA / 100) * TEMPO)
+valor = float(input("Digite o valor do bem em atraso: "))
+taxa = float(input("Digite a taxa de juros: "))
+tempo = int(input("Digite o tempo em dias: "))
+
+prestacao = valor + (valor * (taxa / 100) * tempo)
+
+print(f"O valor da prestação é de R${prestacao}.")
+
+
+# ex211: Elaborar um programa que leia dois valores numéricos reais desconhecidos representados pelas variáveis A e B. Calcular e apresentar os resultados das quatro operações aritméticas básicas.
+A = float(input('Digite o primeiro número: '))
+B = float(input('Digite o segundo número: '))
+
+print(f"A soma entre {A} e {B} é {A + B}")
+print(f"A subtração entre {A} e {B} é {A - B}")
+print(f"A multiplicação entre {A} e {B} é {A * B}")
+print(f"A divisão entre {A} e {B} é {A / B}")
+
+
+# ex212: Construir um programa que calcule e apresente em metros por segundo o valor da velocidade de um projétil que percorre uma distância em quilômetros a um espaço de tempo em minutos. Utilize a fórmula VELOCIDADE = (DISTÂNCIA * 1000) / (TEMPO * 60)
+distancia = float(input("Digite a distância em quilômetros: "))
+tempo = int(input("Digite o tempo em minutos: "))
+
+velocidade = (distancia * 1000) / (tempo * 60)
+print(f"A velocidade do projétil é de {velocidade} m/s.")
+
+
+# ex213: Efetuar a leitura de dois valores numéricos inteiros representados pelas variáveis A e B e apresentar o resultado da diferença do maior valor pelo menor valor.
+A = float(input("Digite o valor A: "))
+B = float(input("Digite o valor B: "))
+
+if A > B:
+    print(f"A diferença entre {A} e {B} é de {A - B}")
+elif A < B:
+    print(f"A diferença entre {B} e {A} é de {B - A}")
+else:
+    print(f"Ambos são iguais, resultando em 0.")
+
+
+# ex214: Efetuar a leitura de um valor numérico inteiro positivo ou negativo representado pela variável N e apresentar o valor lido como sendo positivo. Dica: se o valor lido for menor que zero, ele deve ser multiplicado por -1.
+N = int(input("Digite um número inteiro: "))
+
+if N >= 0:
+    formula = N * 1
+else:
+    formula = N * -1
+
+print(f"O valor de {N} absoluto é {formula}.")
+
+
+# ex215: Realizar a leitura dos valores de quatro notas escolares bimestrais de um aluno representadas pelas variáveis N1, N2, N3 e N4. Calcular a média aritmética (variável MD) desse aluno e apresentar a mensagem "Aprovado" se a média obtida for maior ou igual a 5; caso contrário, apresentar a mensagem "Reprovado". Informar também, após a apresentação das mensagens, o valor da média obtida pelo aluno.
+N1 = float(input('Digite a primeira nota: '))
+N2 = float(input('Digite a segunda nota: '))
+N3 = float(input('Digite a terceira nota: '))
+N4 = float(input('Digite a quarta nota: '))
+
+MD = (N1 + N2 + N3 + N4) / 4
+
+if MD >= 5:
+    print("Aprovado")
+else:
+    print("Reprovado")
+
+
+print(f"A média é de {MD}")
+
+
+# ex216: Ler três valores inteiros representados pelas variáveis A, B e C e apresentar os valores lidos dispostos em ordem crescente.
+A = int(input('Digite o primeiro número: '))
+B = int(input('Digite o segundo número: '))
+C = int(input('Digite o terceiro número: '))
+
+lista = [str(A), str(B), str(C)]
+
+print(f'Os números em ordem crescente são {", ".join(sorted(lista))}')
+
+
+# ex217: Fazer a leitura de quatro valores numéricos inteiros representados pelas variáveis A, B, C e D. Apresentar apenas os valores que sejam divisíveis por 2 e 3.
+A = int(input("Digite o valor de A: "))
+B = int(input("Digite o valor de B: "))
+C = int(input("Digite o valor de C: "))
+D = int(input("Digite o valor de D: "))
+
+for n in [A, B, C, D]:
+    if n % 2 == 0 and n % 3 == 0:
+        print(f"{n} é divisível por 2 e por 3.")
+
+
+# ex218: Ler cinco valores numéricos inteiros (variáveis A, B, C, D e E), identificar e apresentar o maior e o menor valores informados
+A = int(input("Digite o valor de A: "))
+B = int(input("Digite o valor de B: "))
+C = int(input("Digite o valor de C: "))
+D = int(input("Digite o valor de D: "))
+E = int(input("Digite o valor de E: "))
+
+valores = sorted([A, B, C, D, E])
+
+print(f"O menor valor é {valores[0]}.")
+print(f"O maior valor é {valores[-1]}.")
+
+
+# ex219: Efetuar a leitura de um valor numérico inteiro que esteja na faixa de valores de 1 até 9. O programa deve apresentar a mensagem "O valor está na faixa permitida", caso o valor informado esteja entre 1 e 9. Se o valor estiver fora da faixa, o programa deve apresentar a mensagem "O valor está fora da faixa permitida".
+n = int(input("Digite um valor numérico inteiro: "))
+
+if n >= 1 and n <= 9:
+    print("O valor está na faixa permitida")
+else:
+    print("O valor está fora da faixa permitida")
+
+
+# ex220: Efetuar a leitura de três valores inteiros desconhecidos representados pelas variáveis A, B e C. Somar os valores fornecidos e apresentar o resultado somente se for maior ou igual a 100.
+A = int(input("Digite o valor de A: "))
+B = int(input("Digite o valor de B: "))
+C = int(input("Digite o valor de C: "))
+
+soma = A + B + C
+
+if soma >= 100:
+    print("A soma é maior ou igual a 100.")
+else:
+    print("A soma está abaixo de 100.")
+
+
+# ex221: Ler um número inteiro qualquer e multiplicá-lo por dois. Apresentar o resultado da multiplicação somente se o resultado for maior que 30.
+n = int(input("Digite um número inteiro qualquer: "))
+resultado = n * 2
+
+if resultado > 30:
+    print(f"O resultado é {resultado}")
+
+
+# ex222: Elaborar um programa que apresente como resultado os quadrados dos números inteiros existentes na faixa de valores de 15 a 200.
+for i in range(15, 201):
+    print(i ** 2)
+
+
+# ex223: Construir um programa que apresente a soma dos cem primeiros números naturais (1+2+3+ ... +98+99+100).
+soma = 0
+
+for i in range(1, 101):
+    soma += i
+
+print(f"A soma dos cem primeiros números naturais é de {soma}")  # A soma dos cem primeiros números naturais é de 5050
+
+
+# ex224: Elaborar um programa que apresente o somatório dos valores pares existentes na faixa de 1 até 500.
+soma = 0
+
+for i in range(0, 501, 2):
+    soma += i
+
+print(f"A soma dos valores pares existentes na faixa de 1 até 500 é de {soma}")  # A soma dos valores pares existentes na faixa de 1 até 500 é de 62750
+
+
+# ex225: Elaborar um programa que leia dez valores numéricos reais e apresente no final o somatório e a média dos valores lidos.
+soma = 0
+
+for i in range(10):
+    n = float(input("Digite um número real: "))
+    soma += n
+
+print(f"A soma dos números é {soma}")
+print(f"A média dos números é {soma / 10}")
+
+
+# ex226: Elaborar um programa que leia oito elementos inteiros em uma matriz A do tipo vetor. Construir uma matriz 8 de mesma dimensão com os elementos da matriz A multiplicados por 3. O elemento 8[1] deve ser implicado pelo elemento A[1] * 3, o elemento 8[2] implicado pelo elemento A[2] * 3 e assim por diante, até 8. Apresentar a matriz 8.
+lista_A = []
+
+for i in range(8):
+    lista_A.append(int(input("Digite um número inteiro: ")))
+
+lista_B = lambda lista: [lista[i] * 3 for i in range(8)]
+print(lista_B(lista_A))
+
+
+# ex227: Imagine uma máquina que possua somente as operações aritméticas de soma e subtração. Escreva um algoritmo para fazer uma multiplicação.
+
+def multiplicacao(a, b):
+    soma = 0
+
+    for _ in range(b):
+        soma += a
+
+    return soma
+
+
+if __name__ == "__main__":
+    print(multiplicacao(15, 3))  # 45
+    print(multiplicacao(12, 7))  # 84
+    print(multiplicacao(28, 95))  # 2660
+
+
+# ex228: Criar uma aplicação que pergunte dois números inteiros. Se não forem iguais, sorteie 0 ou 1. Se for 0, o menor número ganha. Mas se for 1, ganha o maior número.
+from random import randint
+
+jogador1 = int(input("Digite o valor de A: "))
+jogador2 = int(input("Digite o valor de B: "))
+
+if jogador1 != jogador2:
+    numero = randint(0, 1)
+    print(f"Número sorteado: {numero}")
+
+    if (numero == 0 and jogador1 < jogador2) or (numero == 1 and jogador1 > jogador2):
+        print("Jogador 1 Ganhou!")
+    else:
+        print("Jogador 2 Ganhou!")
+else:
+    print(f"Empate")
+
+
+# ex229: Crie uma função que aceite uma lista de inteiros como parâmetro e retorne cada elemento da lista multiplicado por 3 apenas se este resultar em par.
+def pares_triplicados(lista):
+    return [x * 3 for x in lista if x * 3 % 2 == 0]
+
+
+if __name__ == "__main__":
+    print(pares_triplicados([12, 5, 2, 10]))  # [36, 6, 30]
+    print(pares_triplicados([15, 64, 128, 512, 78]))  # [192, 384, 1536, 234]
+    print(pares_triplicados([27, 39, 21, 15]))  # []
+
+
+# ex230: Given an array of integers, find the one that appears an odd number of times. There will always be only one integer that appears an odd number of times.
+# Examples
+# [7] should return 7, because it occurs 1 time (which is odd).
+# [0] should return 0, because it occurs 1 time (which is odd).
+# [1,1,2] should return 2, because it occurs 1 time (which is odd).
+# [0,1,0,1,0] should return 0, because it occurs 3 times (which is odd).
+# [1,2,2,3,3,3,4,3,3,3,2,2,1] should return 4, because it appears 1 time (which is odd).
+
+def find_it(seq):
+    return [n for n in seq if seq.count(n) % 2 == 1][0]
+
+
+if __name__ == "__main__":
+    print(find_it([1,2,2,3,3,3,4,3,3,3,2,2,1]))  # 4
+    print(find_it([0,1,0,1,0]))  # 0
+    print(find_it([1,1,2]))  # 2
