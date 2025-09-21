@@ -4142,8 +4142,6 @@ if __name__ == "__main__":
 # ex231: Saudação Personalizada: Peça ao usuário para digitar seu nome e, em seguida, imprima uma saudação personalizada, como "Olá, [Nome do Usuário]!".
 nome = input("Digite o seu nome: ")
 print(f"Olá, {nome}!")
-<<<<<<< Updated upstream
-=======
 
 
 # ex232: Leia dois nomes de pessoas e os imprima em ordem alfabética.
@@ -4395,4 +4393,3 @@ if __name__ == "__main__":
     print(mensagem(12))  # Boa tarde!
     print(mensagem(7))  # Bom dia!
     print(mensagem(17))  # Boa tarde!
->>>>>>> Stashed changes
