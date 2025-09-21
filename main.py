@@ -4137,3 +4137,8 @@ if __name__ == "__main__":
     print(find_it([1,2,2,3,3,3,4,3,3,3,2,2,1]))  # 4
     print(find_it([0,1,0,1,0]))  # 0
     print(find_it([1,1,2]))  # 2
+
+
+# ex231: Saudação Personalizada: Peça ao usuário para digitar seu nome e, em seguida, imprima uma saudação personalizada, como "Olá, [Nome do Usuário]!".
+nome = input("Digite o seu nome: ")
+print(f"Olá, {nome}!")
