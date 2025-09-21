@@ -4142,3 +4142,257 @@ if __name__ == "__main__":
 # ex231: Saudação Personalizada: Peça ao usuário para digitar seu nome e, em seguida, imprima uma saudação personalizada, como "Olá, [Nome do Usuário]!".
 nome = input("Digite o seu nome: ")
 print(f"Olá, {nome}!")
+<<<<<<< Updated upstream
+=======
+
+
+# ex232: Leia dois nomes de pessoas e os imprima em ordem alfabética.
+nome1 = input("Digite o nome da primeira pessoa: ")
+nome2 = input("Digite o nome da segunda pessoa: ")
+
+print(", ".join(sorted([nome1, nome2])))
+
+
+# ex233: Sorteie um número entre 1 e 10 e peça ao usuário para tentar adivinhá-lo. Quando o usuário acertar o número, informe quantas tentativas foram necessárias.
+from random import randint
+
+numero = randint(1, 10)
+tentativas = 0
+
+while True:
+    escolha = int(input("Tente acertar um número de 1 a 10: "))
+    while escolha not in range(1, 11):
+        escolha = int(input("Por favor, digite corretamente.\nTente acertar um número de 1 a 10: "))
+
+    if escolha == numero:
+        print(f"Tentativas necessárias: {tentativas}")
+        break
+    else:
+        print("Tente novamente.")
+        tentativas += 1
+
+
+# ex234: Create a class SoftwareEngineer with "name", "age" and "skills" with parameter. Create a method "about" which says about the Software Engineer
+class SoftwareEngineer:
+    def __init__(self, name, age, skills):
+        self.name = name
+        self.age = age
+        self.skills = skills
+
+    def about(self):
+        print(f"{self.name} is a Software Enginner, with {self.age} years old. He/She has the skills: {", ".join(self.skills)}")
+
+
+if __name__ == "__main__":
+    user001 = SoftwareEngineer("Flame", 34, ["Python", "JavaScript", "HTML", "CSS", "C", "C++", "Linux", "PowerShell", "Git", "GitHub", "Java", "Arduino", "Rapsberry PI"])
+    user001.about()  # Flame is a Software Enginner, with 34 years old. He/She has the skills: Python, JavaScript, HTML, CSS, C, C++, Linux, PowerShell, Git, GitHub, Java, Arduino, Rapsberry PI
+
+    user002 = SoftwareEngineer("Julia", 25, ["HTML", "CSS", "React", "Vue", "Tailwind", "Bootstrap", "Git", "GitHub", "JavaScript", "SQL"])
+    user002.about()  # Julia is a Software Enginner, with 25 years old. He/She has the skills: HTML, CSS, React, Vue, Tailwind, Bootstrap, Git, GitHub, JavaScript, SQL
+
+
+# ex235: Média Simples: Peça ao usuário para digitar três notas e calcule a média aritmética.
+n1 = float(input("Digite o primeiro número: "))
+n2 = float(input("Digite o segundo número: "))
+n3 = float(input("Digite o terceiro número: "))
+
+media = sum([n1, n2, n3]) / 3
+print(f"A sua média é {media}")
+
+
+# ex236: Verificar Idade para Votar: Peça a idade do usuário e diga se ele pode votar (idade >= 16).
+idade = int(input("Digite a sua idade: "))
+
+if idade >= 16:
+    print("Você pode votar!")
+else:
+    print("Você não tem idade suficiente para votar.")
+
+
+# ex237: Desconto Simples: Peça o valor de um produto e aplique um desconto de 10%, imprimindo o valor final.
+valor = float(input("Digite o valor do produto: "))
+resultado = valor - (valor * 10) / 100
+
+print(f"O preço do produto com 10% de desconto é R${resultado}")
+
+
+# ex238: Aumento de Salário: Peça o salário de um funcionário e aplique um aumento de 5%, imprimindo o novo salário.
+salario = float(input("Digite o seu salário: "))
+aumento = salario + (salario * 5) / 100
+
+print(f"Seu salário com aumento de 5% é de R${aumento}")
+
+
+# ex239: Mês do Ano: Peça um número de 1 a 12 e imprima o mês do ano correspondente.
+MESES = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"]
+
+mes = int(input("Digite um mês do ano no formato numérico [1-12]: "))
+while mes not in range(1, 13):
+    mes = int(input("Por favor, digite um número entre 1 a 12.\nDigite um mês do ano no formato numérico [1-12]: "))
+
+print(f"Mês selecionado: {MESES[mes-1]}")
+
+
+# ex240: Verificar Vogal ou Consoante: Peça uma letra e diga se é vogal ou consoante.
+def vogal_consoante(letra: str) -> str:
+    return ["Vogal" if letra.lower() in ["a", "e", "i", "o", "u"] else "Consoante"][0] if letra.isalpha() else "Digite uma letra."
+
+if __name__ == "__main__":
+    print(vogal_consoante("A"))  # Vogal
+    print(vogal_consoante("D"))  # Consoante
+    print(vogal_consoante("&"))  # Digite uma letra.
+
+
+# ex241: Substring - Peça duas palavras. Verifique se a segunda palavra está contida na primeira.
+def substring(p1, p2):
+    return p2 in p1
+
+
+if __name__ == "__main__":
+    print(substring("Python", "yth"))  # True
+    print(substring("JavaScript", "avo"))  # False
+    print(substring("HTML, CSS, React", "3"))  # False
+
+
+# ex242: Formatar CPF: Peça um CPF (apenas números) e formate-o como XXX.XXX.XXX-XX.
+def formata_cpf(cpf):
+    return f"{cpf[:3]}.{cpf[3:6]}.{cpf[6:9]}-{cpf[9:]}"
+
+
+if __name__ == "__main__":
+    print(formata_cpf("12345678900"))  # 123.456.789-00
+    print(formata_cpf("67489326455"))  # 674.893.264-55
+    print(formata_cpf("88976325373"))  # 889.763.253-73
+
+
+# ex243: Formatar Telefone: Peça um número de telefone (apenas números) e formate-o como (XX) XXXXX-XXXX.
+def formata_telefone(telefone) -> str:
+    return f"({telefone[:2]}) {telefone[2:7]}-{telefone[7:]}" if len(telefone) == 11 else ""
+
+
+if __name__ == "__main__":
+    print(formata_telefone("51937665634"))  # (51) 93766-5634
+    print(formata_telefone("67945342231"))  # (67) 94534-2231
+    print(formata_telefone("76987665343"))  # (76) 98766-5343
+
+
+# ex244: Verificar Idade para Categoria: Peça a idade e classifique em: Criança (0-12), Adolescente (13-17), Adulto (18-59), Idoso (60+).
+idade = int(input("Digite a sua idade: "))
+
+if idade >= 0 and idade <= 12:
+    print("Criança")
+elif idade > 12 and idade <= 17:
+    print("Adolescente")
+elif idade >= 18 and idade < 59:
+    print("Adulto")
+elif idade >= 60 and idade <= 100:
+    print("Idoso")
+else:
+    print("Idade inválida.")
+
+
+# ex245: Remover Consoantes - Peça uma palavra e imprima-a sem as consoantes.
+def remove_consoantes(palavra):
+    return "".join([l for l in palavra.lower() if l in ["a", "e", "i", "o", "u", " "]])
+
+
+if __name__ == "__main__":
+    print(remove_consoantes("JavaScript e Python"))  # aai e o
+    print(remove_consoantes("Universo e os Multi-Paradoxos"))  # uieo e o uiaaoo
+    print(remove_consoantes("Saturno tem ~274 Luas."))  # auo e  ua
+
+
+# ex246: Remover Elementos Falsy: Dada uma lista, remova todos os elementos que são considerados "falsy" (0, None, False, [], "").
+def remove_falsy(lista):
+    return [l for l in lista if l is False][0]
+
+
+if __name__ == "__main__":
+    print(remove_falsy([0, None, False, [], ""]))  # False
+
+
+# ex247: Dado listas dentro de uma outra lista pai, crie uma função que retorne apenas UMA lista com seus respectivos elementos. Exemplo: [["Python"], ["JavaScript"], [5], [True]] -> ["Python", "JavaScript", 5, True]
+def lista_unica(lista: list):
+    return [element[0] for element in lista]
+
+
+if __name__ == "__main__":
+    lista1 = [["Python"], ["JavaScript"], [5], [True]]
+    print(lista_unica(lista1))  # ['Python', 'JavaScript', 5, True]
+
+    lista2 = [[False], ["Linux"], ["GitHub"], [6.78]]
+    print(lista_unica(lista2))  # [False, 'Linux', 'GitHub', 6.78]
+
+
+# ex248: Peça ao usuário 3 números inteiros e diga se eles são iguais ou não
+n1 = int(input("Digite o primeiro número: "))
+n2 = int(input("Digite o segundo número: "))
+n3 = int(input("Digite o terceiro número: "))
+
+if n1 == n2 and n1 == n3:
+    print("Os números são iguais")
+else:
+    print("Os números são diferentes")
+
+
+# ex249: Crie um programa para contagem regressiva para lançamento de foguete de 10 a 0
+from time import sleep
+
+# i = 10
+# while i >= 1:
+#     print(f"{i}...")
+#     sleep(1)
+#     i -= 1
+# print("Lançar!!!")
+
+for i in range(10, 0, -1):
+    print(f"{i}...")
+    sleep(1)
+print("Lançar!!!")
+
+
+# ex250: Crie uma função que receba x e y como valores inteiros e retorne uma lista de pares e uma lista de ímpares desses ranges.
+def pares_impares(x, y):
+    pares = [str(n) for n in range(x, y+1) if n % 2 == 0]
+    impares = [str(n) for n in range(x, y+1) if n % 2 == 1]
+
+    return (
+        f"Ímpares: {", ".join(impares)}\n"
+        f"Pares: {", ".join(pares)}"
+    )
+
+
+if __name__ == "__main__":
+    print(pares_impares(15, 29))  # Ímpares: 15, 17, 19, 21, 23, 25, 27, 29; Pares: 16, 18, 20, 22, 24, 26, 28
+    print(pares_impares(1, 10))  # Ímpares: 1, 3, 5, 7, 9; Pares: 2, 4, 6, 8, 10
+    print(pares_impares(25, 50))  # Ímpares: 25, 27, 29, 31, 33, 35, 37, 39, 41, 43, 45, 47, 49;Pares: 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50
+
+
+# ex251: Crie uma função que receba uma matriz (Array/Lista bidimensional) com outras sublistas dentro da matriz com números inteiros dentro das sublistas e retorne cada sublista da matriz ordenada com 4 elementos.
+# Regras: O argumento da função deve conter uma quantidade indeterminada de sublistas, mas a contagem de cada número deve ser 4. Exemplo: [[2, 1, 1, 1], [2, 2, 1, 2]] -> Explicação: 2 e 1 aparecem 4 vezes na matriz, mas em sublistas diferentes.
+# Exemplo: [[2, 1, 1, 1], [2, 2, 1, 2]] -> Deve retornar: [[1, 1, 1, 1], [2, 2, 2, 2]]
+# Exemplo: [[4, 3, 2, 1], [1, 1, 3, 1], [2, 4, 3, 2], [4, 4, 3, 2]] -> Deve retornar: [[1, 1, 1, 1], [2, 2, 2, 2], [3, 3, 3, 3], [4, 4, 4, 4]]
+# Exemplo: [[7, 3, 4, 4], [4, 3, 7, 3], [4, 7, 7, 3]] -> Deve retornar: [[3, 3, 3, 3], [4, 4, 4, 4], [7, 7, 7, 7]]
+def matriz_ordenada(matriz):
+    return [sorted([n for l in matriz for n in l])[i-4:i] for i in range(0, len(matriz*4)+1, 4)][1:]
+
+
+if __name__ == "__main__":
+    print(matriz_ordenada([[2, 1, 1, 1], [2, 2, 1, 2]]))  # [[1, 1, 1, 1], [2, 2, 2, 2]]
+    print(matriz_ordenada([[4, 3, 2, 1], [1, 1, 3, 1], [2, 4, 3, 2], [4, 4, 3, 2]]))  # [[1, 1, 1, 1], [2, 2, 2, 2], [3, 3, 3, 3], [4, 4, 4, 4]]
+    print(matriz_ordenada([[7, 3, 4, 4], [4, 3, 7, 3], [4, 7, 7, 3]]))  # [[3, 3, 3, 3], [4, 4, 4, 4], [7, 7, 7, 7]]
+
+
+# ex252: Crie uma função que receba uma hora do dia como parâmetro e retorne a seção do dia por extenso
+def mensagem(hora: int):
+    return "Bom dia!" if hora >= 6 and hora <= 11 else "Boa tarde!" if hora >= 12 and hora <= 17 else "Boa noite!" if hora >= 18 and hora <= 23 else "Hora de dormir!" if hora == 24 or hora >= 0 and hora <= 5 else "Hora inválida."
+
+
+if __name__ == "__main__":
+    print(mensagem(1))  # Hora de dormir!
+    print(mensagem(62))  # Hora inválida.
+    print(mensagem(24))  # Hora de dormir!
+    print(mensagem(12))  # Boa tarde!
+    print(mensagem(7))  # Bom dia!
+    print(mensagem(17))  # Boa tarde!
+>>>>>>> Stashed changes
