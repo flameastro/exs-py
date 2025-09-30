@@ -4529,3 +4529,26 @@ if __name__ == "__main__":
     print(reverse_list([1, 2, 3, 4]))  # [4, 3, 2, 1]
     print(reverse_list([9, 12, 4, 5, 3]))  # [3, 5, 4, 12, 9]
     print(reverse_list([9, 45, 2, 3, 1]))  # [1, 3, 2, 45, 9]
+
+
+# ex260: Write a program that takes a string, (1) capitalizes the first letter, (2) creates a list containing each word, and (3) searches for the last occurrence of ”a” in the first word.
+string = input("Type the string: ")
+
+print(f"Capitalized: {string.capitalize()}")
+print(f"Words: {string.split()}")
+print(f"Last occurrence of \"a\" in the first word: {string.rfind("a")}")
+
+
+# ex261: Write a program that replaces all instances of ”one” with ”one (1)”. For this exercise, capitalization does not matter, so it should treat ”one”, ”One”, and ”oNE” identically.
+string = input("Type a string: ")
+
+print(f"{string.lower().replace("one", "one (1)")}")
+
+
+# ex262: Use a list comprehension to construct the list [’ab’, ’ac’, ’ad’, ’bb’, ’bc’, ’bd’].
+print([fix + var for fix in ["a", "b"] for var in ["b", "c", "d"]])  # ['ab', 'ac', 'ad', 'bb', 'bc', 'bd']
+
+
+# ex263: Use a slice on the above list to construct the list [’ab’, ’ad’, ’bc’].
+original_list = [fix + var for fix in ["a", "b"] for var in ["b", "c", "d"]]
+print(original_list[::2])  # ['ab', 'ad', 'bc']
