@@ -4393,3 +4393,139 @@ if __name__ == "__main__":
     print(mensagem(12))  # Boa tarde!
     print(mensagem(7))  # Bom dia!
     print(mensagem(17))  # Boa tarde!
+
+
+# ex253: Count the number of Duplicates
+# Write a function that will return the count of distinct case-insensitive alphabetic characters and numeric digits that occur more than once in the input string. The input string can be assumed to contain only alphabets (both uppercase and lowercase) and numeric digits.
+
+# Example
+# "abcde" -> 0 # no characters repeats more than once
+# "aabbcde" -> 2 # 'a' and 'b'
+# "aabBcde" -> 2 # 'a' occurs twice and 'b' twice (`b` and `B`)
+# "indivisibility" -> 1 # 'i' occurs six times
+
+def duplicate_count(text):
+    letters = []
+
+    for string in text.lower():
+        if string not in letters and text.lower().count(string) > 1:
+            letters.append(string)
+
+    return len(letters)
+
+
+if __name__ == "__main__":
+    print(duplicate_count("abcdeaB"))
+    print(duplicate_count("Wm18tVKzlsW6uPYCy6JAvsss5Y642VLxKOJcTPqcsb"))
+
+
+# ex254: Complete the function that takes a non-negative integer n as input, and returns a list of all the powers of 2 with the exponent ranging from 0 to n ( inclusive ).
+
+# Examples
+# n = 0  ==> [1]        # [2^0]
+# n = 1  ==> [1, 2]     # [2^0, 2^1]
+# n = 2  ==> [1, 2, 4]  # [2^0, 2^1, 2^2]
+def powers_of_two(n):
+    return [2 ** i for i in range(0, n+1)]
+
+
+if __name__ == "__main__":
+    print(powers_of_two(0))  # [1]
+    print(powers_of_two(1))  # [1, 2]
+    print(powers_of_two(2))  # [1, 2, 4]
+    print(powers_of_two(3))  # [1, 2, 4, 8]
+    print(powers_of_two(4))  # [1, 2, 4, 8, 16]
+    print(powers_of_two(5))  # [1, 2, 4, 8, 16, 32]
+    print(powers_of_two(35))  # [1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536, 131072, 262144, 524288, 1048576, 2097152, 4194304, 8388608, 16777216, 33554432, 67108864, 134217728, 268435456, 536870912, 1073741824, 2147483648, 4294967296, 8589934592, 17179869184, 34359738368]
+
+
+# ex255: Crie uma função que receba um texto como parâmetro e retorne o texto embaralhado, sem nenhuma ordem.
+from random import randint
+
+def embaralha_texto(texto):
+    letra = ""
+    lista = []
+    tamanho = len(texto)
+    numero = randint(0, tamanho-1)
+
+    while len(lista) != tamanho:
+        while numero in lista:
+            numero = randint(0, tamanho-1)
+
+        letra += texto[numero]
+        lista.append(numero)
+
+    return letra
+
+
+if __name__ == "__main__":
+    print(embaralha_texto("Flame"))  # maleF;  Fmael
+    print(embaralha_texto("Ghost Fly"))  #  loGthysF;  Gtshy oFl
+    print(embaralha_texto("Astronomia"))  # nsAmairoto;  onstoiramA
+
+
+# ex256: Your function takes two arguments:
+# current father's age (years)
+# current age of his son (years)
+# Сalculate how many years ago the father was twice as old as his son (or in how many years he will be twice as old). The answer is always greater or equal to 0, no matter if it was in the past or it is in the future.
+def twice_as_old(dad_years_old, son_years_old):
+    return abs(dad_years_old - (son_years_old * 2))
+
+
+if __name__ == "__main__":
+    print(twice_as_old(34, 11))  # 12
+    print(twice_as_old(23, 45))  # 67
+    print(twice_as_old(33, 19))  # 5
+
+
+# ex257: You will be given a list of strings. You must sort it alphabetically (case-sensitive, and based on the ASCII values of the chars) and then return the first value.
+# The returned value must be a string, and have "***" between each of its letters.
+# You should not remove or add elements from/to the array.
+def two_sort(array):
+    return "***".join(list(sorted(array)[0]))
+
+
+if __name__ == "__main__":
+    print(two_sort(["bitcoin", "take", "over", "the", "world", "maybe", "who", "knows", "perhaps"]))  # b***i***t***c***o***i***n
+    print(two_sort(["turns", "out", "random", "test", "cases", "are", "easier", "than", "writing", "out", "basic", "ones"]))  # a***r***e
+    print(two_sort(["i", "want", "to", "travel", "the", "world", "writing", "code", "one", "day"]))  # c***o***d***e
+
+
+# ex258: altERnaTIng cAsE <=> ALTerNAtiNG CaSe
+# Define String.prototype.toAlternatingCase (or a similar function/method such as to_alternating_case/toAlternatingCase/ToAlternatingCase in your selected language; see the initial solution for details) such that each lowercase letter becomes uppercase and each uppercase letter becomes lowercase. For example:
+
+# "hello world".toAlternatingCase() === "HELLO WORLD"
+# "HELLO WORLD".toAlternatingCase() === "hello world"
+# "hello WORLD".toAlternatingCase() === "HELLO world"
+# "HeLLo WoRLD".toAlternatingCase() === "hEllO wOrld"
+# "12345".toAlternatingCase()       === "12345"                   // Non-alphabetical characters are unaffected
+# "1a2b3c4d5e".toAlternatingCase()  === "1A2B3C4D5E"
+# "String.prototype.toAlternatingCase".toAlternatingCase() === "sTRING.PROTOTYPE.TOaLTERNATINGcASE"
+# As usual, your function/method should be pure, i.e. it should not mutate the original string.
+def to_alternating_case(string: str):
+    return string.swapcase()
+
+
+if __name__ == "__main__":
+    print(to_alternating_case("Flame"))
+
+
+# ex259: In this kata you will create a function that takes in a list and returns a list with the reverse order.
+# Examples (Input -> Output)
+# * [1, 2, 3, 4]  -> [4, 3, 2, 1]
+# * [9, 2, 0, 7]  -> [7, 0, 2, 9]
+def reverse_list(list1):
+    # return list(reversed(list1))
+    # return list1[::-1]
+    list2 = []
+
+    for e in list1:
+        list2.insert(0, e)
+
+    return list2
+
+
+if __name__ == "__main__":
+    print(reverse_list([1, 2, 3, 4]))  # [4, 3, 2, 1]
+    print(reverse_list([9, 12, 4, 5, 3]))  # [3, 5, 4, 12, 9]
+    print(reverse_list([9, 45, 2, 3, 1]))  # [1, 3, 2, 45, 9]
