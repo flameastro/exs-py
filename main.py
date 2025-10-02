@@ -4552,3 +4552,17 @@ print([fix + var for fix in ["a", "b"] for var in ["b", "c", "d"]])  # ['ab', 'a
 # ex263: Use a slice on the above list to construct the list [’ab’, ’ad’, ’bc’].
 original_list = [fix + var for fix in ["a", "b"] for var in ["b", "c", "d"]]
 print(original_list[::2])  # ['ab', 'ad', 'bc']
+
+
+# ex264: Use a list comprehension to construct the list [’1a’, ’2a’, ’3a’, ’4a’].
+print([var + fix for var in "a" for fix in ["1", "2", "3", "4"]])
+
+
+# ex265: Crie uma função que receba uma string como parâmetro e retorne a string fatiada pelos 150 primeiros caracteres e no fim um "Leia Mais" se houver mais que 150 caracteres.
+def leia_mais(string):
+    return f"{string[:150]} LEIA MAIS..." if len(string) >= 150 else string
+
+
+if __name__ == "__main__":
+    print(leia_mais("""Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos."""))  # Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus dui LEIA MAIS...
+    print(leia_mais("Python Test"))  # Python Test
