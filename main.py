@@ -4566,3 +4566,16 @@ def leia_mais(string):
 if __name__ == "__main__":
     print(leia_mais("""Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos."""))  # Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus dui LEIA MAIS...
     print(leia_mais("Python Test"))  # Python Test
+
+
+# ex266: When provided with a letter, return its position in the alphabet.
+# Input :: "a"
+# Output :: "Position of alphabet: 1"
+def position(letter):
+    return f"Position of alphabet: {ord(letter.upper()) - 64}"
+
+
+if __name__ == "__main__":
+    print(position("a"))  # Position of alphabet: 1
+    print(position("b"))  # Position of alphabet: 2
+    print(position("z"))  # Position of alphabet: 26
