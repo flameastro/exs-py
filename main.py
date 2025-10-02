@@ -4552,7 +4552,3 @@ print([fix + var for fix in ["a", "b"] for var in ["b", "c", "d"]])  # ['ab', 'a
 # ex263: Use a slice on the above list to construct the list [’ab’, ’ad’, ’bc’].
 original_list = [fix + var for fix in ["a", "b"] for var in ["b", "c", "d"]]
 print(original_list[::2])  # ['ab', 'ad', 'bc']
-
-
-# ex264: Use a list comprehension to construct the list [’1a’, ’2a’, ’3a’, ’4a’].
-print([var + fix for var in "a" for fix in ["1", "2", "3", "4"]])
