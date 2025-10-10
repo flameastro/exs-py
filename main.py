@@ -4579,3 +4579,164 @@ if __name__ == "__main__":
     print(position("a"))  # Position of alphabet: 1
     print(position("b"))  # Position of alphabet: 2
     print(position("z"))  # Position of alphabet: 26
+
+
+# ex267: Crie uma classe `Filme` com atributos `titulo`, `diretor`, `ano` e métodos de assistir, comprar alimento ou recurso e avaliar o filme.
+class Filme:
+    def __init__(self, titulo, diretor, ano):
+        self.titulo = titulo
+        self.diretor = diretor
+        self.ano = ano
+
+    def assistir_filme(self):
+        return f"Você está assistindo {self.titulo}"
+
+    def comprar_recurso(self, alimento):
+        return f"Você comprou {alimento}. Pronto para assistir?"
+
+    def avaliar_filme(self, nota):
+        if (isinstance(nota, int) or isinstance(nota, float)) and (nota >= 0 or nota <= 10):
+            return "Obrigado pela sua avaliação."
+
+        return "Avaliação inválida!"
+
+
+if __name__ == "__main__":
+    toy_story = Filme("Toy Story", "John Lasseter", 1995)
+    print(toy_story.comprar_recurso("pipoca"))  # Você comprou pipoca. Pronto para assistir?
+    print(toy_story.assistir_filme())  # Você está assistindo Toy Story
+    print(toy_story.avaliar_filme(9))  # Obrigado pela sua avaliação.
+
+
+# ex268: Crie uma aplicação completa com classes `Aluno` e `Professor` e interações entre elas.
+class Professor:
+    def __init__(self, nome, materia):
+        self.nome = nome
+        self.materia = materia
+
+    def ensinar(self, aluno, assunto):
+        print(f"Na aula de {self.materia}, {self.nome} ensina {aluno.nome} sobre {assunto}")
+
+
+class Aluno:
+    def __init__(self, nome, idade, serie):
+        self.nome = nome
+        self.idade = idade
+        self.serie = serie
+
+    def apresentar(self, professor):
+        print(f"OI, {professor.nome}! Meu nome é {self.nome}, tenho {self.idade} anos! Estou na {self.serie}")
+
+
+if __name__ == "__main__":
+    aluno_antonio = Aluno("Antônio", 15, "8a Série")
+    professor_rodrigo = Professor("Rodrigo", "Ciências")
+    aluno_antonio.apresentar(professor_rodrigo)  # OI, Rodrigo! Meu nome é Antônio, tenho 15 anos! Estou na 8a Série
+    professor_rodrigo.ensinar(aluno_antonio, "Moléculas")  # Na aula de Ciências, Rodrigo ensina Antônio sobre Moléculas
+
+
+# ex269: Crie uma classe Mockapi que requisita ao mockapi.io 3 tipos de requisição: o get, o post e o delete.
+import requests
+
+
+class Mockapi:
+    def __init__(self, URL):
+        self.URL = URL
+
+    def formato(self):
+        chaves = ", ".join([chave for chave in requests.get(self.URL).json()[0].keys() if chave != "id"])
+        print(f"Você precisará do seguinte formato: {chaves}")
+
+
+    def get(self):
+        print("Requisição GET".center(50, "-"))
+
+        r = requests.get(self.URL)
+
+        if r.status_code == 200:
+            print(f"JSON acessado com sucesso\n{r.json()}")
+
+        print(f"Código: {r.status_code}")
+
+
+    def post(self, data):
+        print("Requisição POST".center(50, "-"))
+
+        r = requests.post(self.URL, data)
+
+        if r.status_code == 201:
+            print("JSON criado com sucesso!")
+
+        print(f"Código: {r.status_code}")
+
+
+    def delete(self, user_id):
+        print("Requisição DELETE".center(50, "-"))
+
+        if self.URL.endswith("/"):
+            self.URL += user_id
+        else:
+            self.URL += f"/{user_id}"
+
+        r = requests.delete(self.URL)
+
+        if r.status_code == 200:
+            print("JSON deletado com sucesso!")
+        elif r.status_code == 404:
+            print("Este JSON não existe!")
+
+        print(f"Código: {r.status_code}")
+
+
+if __name__ == "__main__":
+    mockapi = Mockapi("https://68c9c972ceef5a150f660771.mockapi.io/name")
+    mockapi.formato()
+
+
+# ex270: Uma empresa vai conceder um aumento diferenciado a seus funcionários segundo os seguintes critérios: 
+# quem ganha até 1000 reais (inclusive) terá aumento de 20 %;
+# entre 1000 e 2000 (inclusive), aumento de 18 %;
+# entre 2000 e 4000 (inclusive) aumento de 15 %
+# e acima de 4000 aumento de 10 %.
+#  Escreva um programa que, dado um valor de salário, calcule o novo valor após o aumento.
+salario = float(input("Digite o seu salário: "))
+
+if salario <= 1000:
+    salario += (salario * 20) / 100
+elif salario > 1000 and salario <= 2000:
+    salario += (salario * 18) / 100
+elif salario > 2000 and salario <= 4000:
+    salario += (salario * 15) / 100
+elif salario > 4000:
+    salario += (salario * 10) / 100
+
+print(f"Seu salário com o aumento ajustado é de R${salario}.")
+
+
+# ex271: Considere que um ser humano pode ser classificado segundo sua idade nas seguintes faixas etárias:
+# Bebê (nascimento até 3 anos).
+# Criança (4 até 7 anos).
+# Pré-adolescente (8 até 12 anos).
+# Adolescente (13 até 20 anos).
+# Jovem (21 a 40 anos).
+# Meia-idade (41 até 64 anos).
+# Idoso (65 anos em diante).
+# Escreva um programa que solicite uma idade e imprima a classificação correspondente.
+idade = int(input("Digite a sua idade: "))
+
+if idade <= 3:
+    classificacao = "Bebê"
+elif idade > 3 and idade <= 7:
+    classificacao = "Criança"
+elif idade > 7 and idade <= 12:
+    classificacao = "Pré-Adolescente"
+elif idade > 12 and idade <= 20:
+    classificacao = "Adolescente"
+elif idade > 20 and idade <= 40:
+    classificacao = "Jovem"
+elif idade > 40 and idade <= 64:
+    classificacao = "Meia-Idade"
+elif idade > 64:
+    classificacao = "Idoso"
+
+print(f"Sua classificação é: {classificacao}")
