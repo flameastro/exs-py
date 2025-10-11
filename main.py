@@ -4749,3 +4749,48 @@ print(f"O número digitado foi: {numero}")
 print(f"O quadrado do número digitado é: {numero ** 2}")
 print(f"O cubo do número digitado é: {numero ** 3}")
 
+
+# ex273: Escreva um programa que converta todas as letras de um arquivo em maiúsculas e escreva o resultado na tela.
+arquivo = input("Digite o nome do arquivo: ")
+
+try:
+    with open(arquivo, "r", encoding="utf-8") as f:
+        f.seek(0)
+
+        for linha in f.readlines():
+            print(linha.upper())
+except Exception as e:
+    print(f"Ocorreu um erro ao tentar abrir o arquivo. Verifique se ele realmente existe. Erro: {e}")
+
+
+# ex274: Escreva um programa que salve em cada linha de um arquivo a conversão de temperaturas Fahrenheit para Celsius de 0 a 300.
+arquivo = "Conversao-Fahrenheit-para-Celsius.txt"
+
+with open(arquivo, "w") as f:
+    for fahrenheit in range(0, 301):
+        celsius = (fahrenheit - 32) / 1.8
+
+        f.write(f"{fahrenheit} Graus Fahrenheit equivale a {celsius:.2f} Graus Celsius\n")
+
+
+# ex275: Escreva um programa que copie o conteúdo de um arquivo para um novo arquivo. Seu programa deve verificar se o primeiro arquivo realmente existe.
+try:
+    arquivo_leitura = input("Qual o arquivo deseja ler? ")
+
+    with open(arquivo_leitura, "r", encoding="utf-8") as f:
+        f.seek(0)
+        conteudo = f.read()
+except Exception as e:
+    print(f"Ocorreu um erro ao tentar abrir o arquivo de leitura. Verifique novamente. Erro: {e}")
+
+try:
+    arquivo_destino = input("Qual será o arquivo de destino? ")
+
+    if arquivo_destino == arquivo_leitura:
+        print("Você não pode copiar e colar o conteúdo no mesmo arquivo.")
+    else:
+        with open(arquivo_destino, "w", encoding="utf-8") as f:
+            f.write(conteudo)
+except Exception as e:
+    print(f"Ocorreu um erro ao tentar criar o arquivo de destino. Verifique novamente. Erro: {e}")
+
