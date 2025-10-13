@@ -4955,3 +4955,34 @@ except ValueError as value_error:
     print(f"Você digitou um valor diferente do esperado. Por favor, certifique-se de que escreveu corretamente.")
 except Exception as e:
     print(f"Algum erro indesejado ocorreu. Por favor, entre em contato com o administrador em https://github.com/flameastro")
+
+
+# ex278: Crie um programa que pergunte ao usuário seu nome, sua idade e seu endereço e imprima as suas informações num formato JSON (ou dicionário)
+nome = input("Digite o seu nome: ")
+idade = int(input("Digite a sua idade: "))
+endereco = input("Digite o seu endereço: ")
+
+informacoes = {
+    "Nome": nome,
+    "Idade": idade,
+    "Endrereço": endereco
+}
+
+print(informacoes)
+
+
+# ex279: Crie um programa que peça ao usuário digitar o valor do numerador e denominador e imprima a fração em decimal.
+numerador = float(input("Digite o numerador: "))
+denominador = float(input("Digite o denominador: "))
+
+fracao = numerador / denominador
+print(f"O valor decimal da fração é {fracao}")
+
+
+# ex280: Crie um programa que peça ao usuário as horas e os minutos do dia e diga quantos segundos já se passaram desde o início do dia (00:00)
+horas = int(input("Digite o valor da hora: "))
+minutos = int(input("Digite o valor dos minutos: "))
+
+segundos = (minutos * 60) + ((horas * 60) * 60)
+print(f"Se passaram {segundos} segundos.")
+
