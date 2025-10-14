@@ -4986,3 +4986,65 @@ minutos = int(input("Digite o valor dos minutos: "))
 segundos = (minutos * 60) + ((horas * 60) * 60)
 print(f"Se passaram {segundos} segundos.")
 
+
+# ex281: Crie um programa que peça ao usuário números inteiros indefinidamente até que o usuário insira o valor "0". Ao final do programa, imprima os pares, a soma e a média dos números digitados.
+numeros = []
+while True:
+    numero = int(input("Insira um número inteiro ou 0 para sair. "))
+
+    if numero == 0:
+        break
+
+    numeros.append(numero)
+
+
+if len(numeros) == 0:
+    print(f"A lista não possui nenhum número, impossível realizar operações.")
+else:
+    soma = 0
+    pares = []
+
+    for numero in numeros:
+        soma += numero
+
+        if numero % 2 == 0:
+            pares.append(str(numero))
+
+    media = soma / len(numeros)
+
+    print(f"Os números pares da lista são: {', '.join(pares) if pares else 'Nenhum número par'}")
+    print(f"A soma dos números digitados é {soma}")
+    print(f"A média dos números digitados é {media}")
+
+
+# ex282: Crie um algoritmo que peça ao usuário uma palavra e imprima essa palavra em escadinhas.
+# palavra: AMOR
+# A
+# AM
+# AMO
+# AMOR
+# ... E em seguida:
+# AMOR
+# MOR
+# OR
+# R
+palavra = input("Digite uma palavra: ")
+
+for i in range(1, len(palavra)+1):
+    print(palavra[:i])
+
+for i in range(0, len(palavra)):
+    print(palavra[i:])
+
+
+# ex283: Crie um algoritmo que peça ao usuário uma palavra e exiba o seguinte resultado:
+# palavra: SONHO
+# SONHO
+# SONHO SONHO
+# SONHO SONHO SONHO
+# SONHO SONHO SONHO SONHO
+# SONHO SONHO SONHO SONHO SONHO
+palavra = input("Digite uma palavra: ").strip()
+
+for i in range(1, 6):
+    print(f"{palavra} " * i)
