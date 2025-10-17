@@ -605,3 +605,127 @@ elif pontos <= 1:
     classificacao = "Inocente"
 
 print(f"A classificação do participante foi: {classificacao}")
+
+
+# ex026: Um posto está vendendo combustíveis com a seguinte tabela de descontos:
+# Álcool:
+# até 20 litros: desconto de 3% por litro
+# acima de 20 litros: desconto de 5% por litro
+# Gasolina: - até 20 litros: desconto de 4% por litro - acima de 20 litros: desconto de 6% por litro
+# Escreva um algoritmo que leia o número de litros vendidos, o tipo de combustível (codificado da seguinte forma: A-álcool, G-gasolina), calcule e imprima o valor a ser pago pelo cliente sabendo-se que o preço do litro da gasolina é R$ 2,50 o preço do litro do álcool é R$ 1,90.
+litros = float(input("Digite a quantidade de litros vendidos: "))
+combustivel = input("Digite o tipo de combustível (A para Álcool/G para Gasolina): ").upper()
+while combustivel not in ["A", "G"]:
+    print("Certifique-se de informar o tipo de combustível corretamente.")
+    combustivel = input("Digite o tipo de combustível (A para Álcool/G para Gasolina): ").upper()
+
+if combustivel == "A":
+    preco = 1.90
+    if litros <= 20:
+        desconto = 3
+    else:
+        desconto = 5
+
+    total = (preco * litros) / ((litros * desconto) / 100)
+elif combustivel == "G":
+    preco = 2.50
+    if litros <= 20:
+        desconto = 4
+    else:
+        desconto = 6
+
+    total = (preco * litros) / ((litros * desconto) / 100)
+else:
+    print("Algum erro ocorreu. Tente novamente.")
+
+print(f"Total: R${total}")
+
+
+# e027: Uma fruteira está vendendo frutas com a seguinte tabela de preços:
+#                 Até 5 Kg                Acima de 5 Kg
+# Morango         R$ 2,50 por Kg          R$ 2,20 por Kg
+# Maçã            R$ 1,80 por Kg          R$ 1,50 por Kg
+# Se o cliente comprar mais de 8 Kg em frutas ou o valor total da compra ultrapassar R$ 25,00, receberá ainda um desconto de 10% sobre este total. Escreva um algoritmo para ler a quantidade (em Kg) de morangos e a quantidade (em Kg) de maças adquiridas e escreva o valor a ser pago pelo cliente.
+morangos = float(input("Digite a quantidade de morangos em kg: "))
+while morangos not in range(1, 10000):
+    print("Por favor, insira um valor adequado.")
+    morangos = float(input("Digite a quantidade de morangos em kg: "))
+
+macas = float(input("Digite a quantidade de maças em kg: "))
+while macas not in range(1, 10000):
+    print("Por favor, insira um valor adequado.")
+    macas = float(input("Digite a quantidade de maças em kg: "))
+
+
+if morangos <= 5:
+    preco_morango = 2.50
+else:
+    preco_morango = 2.20
+
+
+if macas <= 5:
+    preco_maca = 1.80
+else:
+    preco_maca = 1.50
+
+preco = (preco_maca * macas) + (preco_morango * morangos)
+
+if (morangos + macas > 8) or (preco > 25):
+    desconto = 10
+    preco -= (preco * desconto) / 100
+
+print(f"Preço a pagar: R${preco:.2f}.")
+
+
+# O Hipermercado Tabajara está com uma promoção de carnes que é imperdível. Confira:
+
+#                 Até 5 Kg                Acima de 5 Kg
+# File Duplo      R$ 4,90 por Kg          R$ 5,80 por Kg
+# Alcatra         R$ 5,90 por Kg          R$ 6,80 por Kg
+# Picanha         R$ 6,90 por Kg          R$ 7,80 por Kg
+# Para atender a todos os clientes, cada cliente poderá levar apenas um dos tipos de carne da promoção, porém não há limites para a quantidade de carne por cliente. Se a compra for feita no cartão Tabajara o cliente receberá ainda um desconto de 5% sobre o total da compra. Escreva um programa que peça o tipo e a quantidade de carne comprada pelo usuário e gere um cupom fiscal, contendo as informações da compra: tipo e quantidade de carne, preço total e valor do desconto
+tipo = input("Qual será o tipo de carne? [File Duplo/Alcatra/Picanha] ").lower().strip()
+while tipo not in ["file duplo", "alcatra", "picanha"]:
+    print("Por favor, certifique de escolher apenas um dos os seguintes tipos de carne: File Duplo/Alcatra/Picanha")
+    tipo = input("Qual será o tipo de carne? [File Duplo/Alcatra/Picanha] ").lower().strip()
+
+quantidade = int(input("Quantas carnes deseja? "))
+while quantidade not in range(1, 1000):
+    print("Por favor, digite um valor adequado.")
+    quantidade = int(input("Quantas carnes deseja? "))
+
+cliente_tabajara = input("Você é cliente do Tabajara? [S/N] ").upper().strip()
+while cliente_tabajara not in ["S", "N"]:
+    print("Por favor, considere inserir S para SIM e N para NÃO.")
+    cliente_tabajara = input("Você é cliente do Tabajara? [S/N] ").upper().strip()
+
+desconto = None
+if cliente_tabajara == "S":
+    desconto = 5
+
+
+if tipo == "alcatra":
+    if quantidade <= 5:
+        preco_unitario = 5.90
+    else:
+        preco_unitario = 6.80
+elif tipo == "file duplo":
+    if quantidade <= 5:
+        preco_unitario = 4.90
+    else:
+        preco_unitario = 5.80
+elif tipo == "picanha":
+    if quantidade <= 5:
+        preco_unitario = 6.90
+    else:
+        preco_unitario = 7.80
+
+
+preco = (preco_unitario * quantidade) + desconto
+
+
+print(" NOTA FISCAL ".center(50, "-"))
+print(f"Tipo de carne: {tipo}")
+print(f"Quantidade de carne: {quantidade}")
+print(f"Preço total: {preco:.2f}")
+print(f"Valor do desconto: {desconto}%")
