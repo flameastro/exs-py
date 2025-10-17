@@ -366,7 +366,7 @@ else:
     print("O ano não é bissexto.")
 
 
-# Faça um programa que peça uma data no formato dd/mm/aaaa e determine se a mesma é uma data válida.
+# ex018: Faça um programa que peça uma data no formato dd/mm/aaaa e determine se a mesma é uma data válida.
 def valida_data():
     data = input("Digite uma data no formato dd/mm/aaaa: ")
     if data.count("/") != 2:
@@ -384,3 +384,224 @@ def valida_data():
 
 
 print(valida_data())
+
+
+# ex019: Faça um programa que leia um número inteiro menor que 1000 e imprima a quantidade de centenas, dezenas e unidades do mesmo.
+# Observando os termos no plural a colocação do "e", da vírgula entre outros. Exemplo:
+# 326 = 3 centenas, 2 dezenas e 6 unidades
+# 12 = 1 dezena e 2 unidades
+# Testar com: 326, 300, 100, 320, 310,305, 301, 101, 311, 111, 25, 20, 10, 21, 11, 1, 7 e 16
+def decomposicao(numero: int) -> str:
+    if numero not in range(1, 1001):
+        return "Por favor, insir um número entre 1 a 1000."
+
+    print(f"Número: {numero}")
+
+    if len(str(numero)) == 3:
+        centenas = numero // 100
+        dezenas = str(numero // 10)[1]
+        unidades = numero % 10
+        return f"{centenas} centenas, {dezenas} dezenas e {unidades} unidades."
+    elif len(str(numero)) == 2:
+        dezenas = numero // 10
+        unidades = numero % 10
+        return f"{dezenas} dezenas e {unidades} unidades."
+    elif len(str(numero)) == 1:
+        return f"{numero} unidades."
+    else:
+        return f"1 milhar, 0 centenas, 0 dezenas e 0 unidades."
+
+
+NUMEROS = [326, 300, 100, 320, 310, 305, 301, 101, 311, 111, 25, 20, 10, 21, 11, 1, 7, 16]
+for numero in NUMEROS:
+    print(decomposicao(numero))
+
+
+# ex020: Faça um programa para leitura de três notas parciais de um aluno. O programa deve calcular a média alcançada por aluno e presentar:
+
+# A mensagem "Aprovado", se a média for maior ou igual a 7, com a respectiva média alcançada;
+# A mensagem "Reprovado", se a média for menor do que 7, com a respectiva média alcançada;
+# A mensagem "Aprovado com Distinção", se a média for igual a 10.
+n1 = float(input("Digite a primeira nota: "))
+while n1 not in range(0, 11):
+    print("Nota inválida, por favor, insira novamente.")
+    n1 = float(input("Digite a primeira nota: "))
+
+n2 = float(input("Digite a segunda nota: "))
+while n2 not in range(0, 11):
+    print("Nota inválida, por favor, insira novamente.")
+    n2 = float(input("Digite a segunda nota: "))
+
+n3 = float(input("Digite a terceira nota: "))
+while n3 not in range(0, 11):
+    print("Nota inválida, por favor, insira novamente.")
+    n3 = float(input("Digite a terceira nota: "))
+
+media = (sum[n1, n2, n3]) / 3
+print(f"Média: {media}")
+
+if media == 10:
+    print("APROVADO COM DISTINÇÃO")
+if media >= 7:
+    print("APROVADO")
+elif media < 7:
+    print("REPROVADO")
+
+
+# ex021: Faça um programa para um caixa eletrônico. O programa deverá perguntar ao usuário o valor do saque e depois informar quantas notas de cada valor serão fornecidas. As notas disponíveis serão as de 1, 5, 10, 50 e 100 reais. O valor mínimo é de 10 reais e o máximo de 600 reais. O programa não deve se preocupar com a quantidade de notas existentes na máquina.
+
+# Exemplo 1: Para sacar a quantia de 256 reais, o programa fornece duas notas de 100, uma nota de 50, uma nota de 5 e uma nota de 1;
+# Exemplo 2: Para sacar a quantia de 399 reais, o programa fornece três notas de 100, uma nota de 50, quatro notas de 10, uma nota de 5 e quatro notas de 1.
+saque = int(input("Digite o valor do saque: "))
+
+notas_cem = 0
+notas_cinquenta = 0
+notas_dez = 0
+notas_cinco = 0
+notas_um = 0
+
+while saque >= 100:
+    saque -= 100
+    notas_cem += 1
+
+while saque >= 50:
+    saque -= 50
+    notas_cinquenta += 1
+
+while saque >= 10:
+    saque -= 10
+    notas_dez += 1
+
+while saque >= 5:
+    saque -= 5
+    notas_cinco += 1
+
+while saque >= 1:
+    saque -= 1
+    notas_um += 1
+
+
+print(f"Notas de cem: {notas_cem}")
+print(f"Notas de cinquenta: {notas_cinquenta}")
+print(f"Notas de dez: {notas_dez}")
+print(f"Notas de cinco: {notas_cinco}")
+print(f"Notas de um: {notas_um}")
+print(f"Resultado: {(notas_cem * 100) + (notas_cinquenta * 50) + (notas_dez * 10) + (notas_cinco * 5) + (notas_um * 1)}")
+
+
+# ex022: Faça um programa que peça um número inteiro e determine se ele é par ou impar. Dica: utilize o operador módulo (resto da divisão).
+numero = int(input("Digite um número inteiro: "))
+if numero % 2 == 0:
+    print("PAR")
+else:
+    print("ÍMPAR")
+
+
+# ex023: Faça um programa que peça um número e informe se o número é inteiro ou decimal. Dica: utilize uma função de arredondamento.
+numero = float(input("Digite um número qualquer: "))
+
+if numero.is_integer():
+    print("INTEIRO")
+else:
+    print("DECIMAL")
+
+
+# ex024: Faça um programa que leia 2 números e em seguida pergunte ao usuário qual operação ele deseja realizar. O resultado da operação deve ser acompanhado de uma frase que diga se o número é:
+# par ou ímpar;
+# positivo ou negativo;
+# inteiro ou decimal.
+n1 = float(input("Digite o primeiro número: "))
+n2 = float(input("Digite o segundo número: "))
+
+print(" OPERAÇÕES PERMITIDAS ".center(50, "-"))
+print("+ -> Adição")
+print("- -> Subtração")
+print("* -> Multiplicação")
+print("/ -> Divisão")
+operacao = input("Qual operação deseja realizar? ").lower()
+if operacao == "+":
+    numero = n1 + n2
+elif operacao == "-":
+    numero = n1 - n2
+elif operacao == "*":
+    numero = n1 * n2
+elif operacao == "/":
+    numero = n1 / n2
+else:
+    print("Por favor, insira um valor válido.")
+    numero = None
+
+if numero is not None:
+    print(f"O resultado do número é {numero}")
+    print(" Detalhes sobre o número inserido ".center(50, "-"))
+    print("PAR" if numero % 2 == 0 else "ÍMPAR")
+    print("POSITIVO" if numero > 0 else "NEGATIVO")
+    print("INTEIRO" if numero.is_integer() else "DECIMAL")
+
+
+# ex025: Faça um programa que faça 5 perguntas para uma pessoa sobre um crime. As perguntas são:
+
+# "Telefonou para a vítima?"
+# "Esteve no local do crime?"
+# "Mora perto da vítima?"
+# "Devia para a vítima?"
+# "Já trabalhou com a vítima?"
+# O programa deve no final emitir uma classificação sobre a participação da pessoa no crime. Se a pessoa responder positivamente a 2 questões ela deve ser classificada como "Suspeita", entre 3 e 4 como "Cúmplice" e 5 como "Assassino". Caso contrário, ele será classificado como "Inocente".
+print("Responda \"s\" para SIM e \"n\" para NÃO...")
+pontos = 0
+
+telefonou = input("Telefonou para a vítima? ").lower()
+while telefonou not in ["s", "n"]:
+    print("Por favor, digite \"s\" para SIM e \"n\" para NÃO.")
+    telefonou = input("Telefonou para a vítima? ").lower()
+
+if telefonou == "s":
+    pontos += 1
+
+
+local = input("Esteve no local do crime? ").lower()
+while local not in ["s", "n"]:
+    print("Por favor, digite \"s\" para SIM e \"n\" para NÃO.")
+    local = input("Esteve no local do crime? ").lower()
+
+if local == "s":
+    pontos += 1
+
+
+mora_perto = input("Mora perto da vítima? ").lower()
+while mora_perto not in ["s", "n"]:
+    print("Por favor, digite \"s\" para SIM e \"n\" para NÃO.")
+    mora_perto = input("Mora perto da vítima? ").lower()
+
+if mora_perto == "s":
+    pontos += 1
+
+
+devia = input("Devia para a vítima? ").lower()
+while devia not in ["s", "n"]:
+    print("Por favor, digite \"s\" para SIM e \"n\" para NÃO.")
+    devia = input("Devia para a vítima? ").lower()
+
+if devia == "s":
+    pontos += 1
+
+
+trabahou = input("Já trabalhou com a vítima? ").lower()
+while trabahou not in ["s", "n"]:
+    print("Por favor, digite \"s\" para SIM e \"n\" para NÃO.")
+    trabahou = input("Já trabalhou com a vítima? ").lower()
+
+if trabahou == "s":
+    pontos += 1
+
+
+if pontos == 5:
+    classificacao = "Assasino"
+elif pontos >= 3:
+    classificacao = "Cúmplice"
+elif pontos == 2:
+    classificacao = "Suspeito"
+elif pontos <= 1:
+    classificacao = "Inocente"
+
+print(f"A classificação do participante foi: {classificacao}")
