@@ -108,3 +108,107 @@ for i in range(5):
     numeros.append(numero)
 
 print(f"O maior número inserido foi {sorted(numeros)[-1]}")
+
+
+# ex008: Faça um programa que leia 5 números e informe a soma e a média dos números.
+soma = 0
+for i in range(5):
+    numero = float(input(f"Digite o {i+1}o número: "))
+    soma += numero
+
+media = soma / 5
+print(f"A soma dos números é: {soma}")
+print(f"A média dos números é: {media}")
+
+
+# ex009: Faça um programa que imprima na tela apenas os números ímpares entre 1 e 50.
+print(", ".join([str(numero) for numero in range(1, 51, 2)]))
+
+
+# ex010: Faça um programa que receba dois números inteiros e gere os números inteiros que estão no intervalo compreendido por eles.
+n1 = int(input("Insira o primeiro número inteiro: "))
+n2 = int(input("Insira o segundo número inteiro: "))
+
+if n1 > n2:
+    for numero in range(n1, n2-1, -1):
+        print(numero)
+else:
+    for numero in range(n1, n2+1):
+        print(numero)
+
+
+# ex011: Altere o programa anterior para mostrar no final a soma dos números.
+n1 = int(input("Insira o primeiro número inteiro: "))
+n2 = int(input("Insira o segundo número inteiro: "))
+
+soma = 0
+if n1 > n2:
+    for numero in range(n1, n2-1, -1):
+        print(numero)
+        soma += numero
+else:
+    for numero in range(n1, n2+1):
+        print(numero)
+        soma += numero
+
+print(f"A soma dos números é: {soma}")
+
+
+# ex012: Desenvolva um gerador de tabuada, capaz de gerar a tabuada de qualquer número inteiro entre 1 a 10. O usuário deve informar de qual numero ele deseja ver a tabuada. A saída deve ser conforme o exemplo abaixo:
+
+# Tabuada de 5:
+# 5 X 1 = 5
+# 5 X 2 = 10
+# ...
+# 5 X 10 = 50
+numero = int(input("Qual o número da tabuada deseja? "))
+
+for i in range(1, 11):
+    print(f"{numero} X {i} = {numero * i}")
+
+
+# ex013: Faça um programa que peça dois números, base e expoente, calcule e mostre o primeiro número elevado ao segundo número. Não utilize a função de potência da linguagem.
+base = int(input("Digite a base: "))
+expoente = int(input("Digite o expoente: "))
+
+if expoente == 0:
+    print(1)
+else:
+    resultado = base
+    for i in range(1, abs(expoente)):
+        resultado *= base
+
+    if expoente < 0:
+        print(f"O resultado da exponenciação é {1 / resultado}")
+    else:
+        print(f"O resultado da exponenciação é {resultado}")
+
+
+# ex014: Faça um programa que peça 10 números inteiros, calcule e mostre a quantidade de números pares e a quantidade de números impares.
+pares = 0
+impares = 0
+for i in range(10):
+    numero = int(input(f"Insira o {i+1}o numero inteiro: "))
+
+    if numero % 2 == 0:
+        pares += 1
+    else:
+        impares += 1
+
+print(f"A quantidade de números pares é de {pares}")
+print(f"A quantidade de números impares é de {impares}")
+
+
+# ex015: A série de Fibonacci é formada pela seqüência 1,1,2,3,5,8,13,21,34,55,... Faça um programa capaz de gerar a série até o n−ésimo termo.
+quantidade = int(input("Digite o n-ésimo termo: "))
+termos = []
+termo = 1
+
+for i in range(0, quantidade+1):
+    if len(termos) != 0:
+        termo = termo + int(termos[i-1])
+    else:
+        termos.append(str(termo))
+    termos.append(str(termo))
+
+print(f"Termos: {",".join(termos)}")
