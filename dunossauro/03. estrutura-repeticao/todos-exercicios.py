@@ -212,3 +212,210 @@ for i in range(0, quantidade+1):
     termos.append(str(termo))
 
 print(f"Termos: {",".join(termos)}")
+
+
+# ex016: A série de Fibonacci é formada pela seqüência 0,1,1,2,3,5,8,13,21,34,55,... Faça um programa que gere a série até que o valor seja maior que 500.
+termos = []
+termo = 1
+i = 0
+
+while True:
+    if len(termos) != 0:
+        termo = termo + int(termos[i-1])
+    else:
+        termos.append(str(termo))
+    termos.append(str(termo))
+
+    if termo >= 500:
+        break
+
+    i += 1
+
+print(f"Termos: {",".join(termos)}")
+
+
+# ex017: Faça um programa que calcule o fatorial de um número inteiro fornecido pelo usuário. Ex.: 5!=5.4.3.2.1=120
+numero = int(input("Insira o número que deseja descobrir o fatorial: "))
+fatorial = 1
+
+for i in range(1, numero+1):
+    fatorial *= i
+
+print(f"O fatorial de {numero} é {fatorial} ({"x".join([str(x) for x in range(numero, 0, -1)])} = {fatorial})")
+
+
+# ex018: Faça um programa que, dado um conjunto de N números, determine o menor valor, o maior valor e a soma dos valores.
+conjunto = []
+while True:
+    numero = int(input("Digite um número ou -1 para sair: "))
+
+    if numero == -1:
+        break
+
+    conjunto.append(numero)
+
+conjunto = sorted(conjunto)
+
+maior = conjunto[-1]
+menor = conjunto[0]
+
+soma = 0
+for numero in conjunto:
+    soma += numero
+
+print(f"O maior número do conjunto é: {maior}.")
+print(f"O menor número do conjunto é: {menor}.")
+print(f"A soma dos números do conjunto é: {soma}.")
+
+
+# ex019: Altere o programa anterior para que ele aceite apenas números entre 0 e 1000.
+conjunto = []
+while True:
+    numero = int(input("Digite um número entre 0 a 1000 ou 0 para sair: "))
+    while numero not in range(0, 1001):
+        print("Por favor, insira um número entre 0 a 1001.")
+        numero = int(input("Digite um número entre 0 a 1000 ou 0 para sair: "))
+
+
+    if numero == 0:
+        break
+
+    conjunto.append(numero)
+
+conjunto = sorted(conjunto)
+
+maior = conjunto[-1]
+menor = conjunto[0]
+
+soma = 0
+for numero in conjunto:
+    soma += numero
+
+print(f"O maior número do conjunto é: {maior}.")
+print(f"O menor número do conjunto é: {menor}.")
+print(f"A soma dos números do conjunto é: {soma}.")
+
+
+# ex020: Altere o programa de cálculo do fatorial, permitindo ao usuário calcular o fatorial várias vezes e limitando o fatorial a números inteiros positivos e menores que 16.
+quantidade = int(input("Quantas vezes deseja calcular o fatorial de algum número? "))
+while quantidade not in range(0, 11):
+    print("O valor da quantidade é muito alto. Tente um valor entre 0 a 10.")
+    quantidade = int(input("Quantas vezes deseja calcular o fatorial de algum número? "))
+
+for _ in range(quantidade):
+    numero = int(input("Insira o número que deseja descobrir o fatorial: "))
+    while numero not in range(1, 17):
+        print("Por favor, certifique-se de inserir um valor válido.")
+        numero = int(input("Insira o número que deseja descobrir o fatorial: "))
+
+    fatorial = 1
+
+    for i in range(1, numero+1):
+        fatorial *= i
+
+    print(f"O fatorial de {numero} é {fatorial} ({"x".join([str(x) for x in range(numero, 0, -1)])} = {fatorial})")
+
+
+# ex021: Faça um programa que peça um número inteiro e determine se ele é ou não um número primo. Um número primo é aquele que é divisível somente por ele mesmo e por 1.
+numero = int(input("Insira um número inteiro: "))
+
+divisores = [divisivel for divisivel in range(1, (numero // 2) + 1) if numero % divisivel == 0]
+
+if len(divisores) > 1:
+    print(f"{numero} não é um número primo (número composto)")
+else:
+    print(f"{numero} é um número primo.")
+
+
+# ex022: Altere o programa de cálculo dos números primos, informando, caso o número não seja primo, por quais número ele é divisível.
+numero = int(input("Insira um número inteiro: "))
+
+divisores = [str(divisivel) for divisivel in range(1, (numero // 2) + 1) if numero % divisivel == 0]
+
+if len(divisores) > 1:
+    print(f"{numero} não é um número primo (número composto)")
+    print(f"Seus divisores são: {", ".join(divisores)}")
+else:
+    print(f"{numero} é um número primo.")
+
+
+# ex023: Faça um programa que mostre todos os primos entre 1 e N sendo N um número inteiro fornecido pelo usuário. O programa deverá mostrar também o número de divisões que ele executou para encontrar os números primos. Serão avaliados o funcionamento, o estilo e o número de testes (divisões) executados.
+import math
+
+N = int(input("Digite um número inteiro: "))
+total_divisoes = 0
+
+print(f"Números primos entre 1 e {N}:")
+
+for num in range(2, N + 1):
+    primo = True
+
+    for i in range(2, int(math.sqrt(num)) + 1):
+        total_divisoes += 1
+        if num % i == 0:
+            primo = False
+            break
+    if primo:
+        print(num, end=' ')
+
+print(f"\n\nTotal de divisões executadas: {total_divisoes}")
+
+
+# ex024: Faça um programa que calcule e mostre a média aritmética de N notas.
+quantidade = 0
+soma = 0
+
+while True:
+    nota = float(input("Insira uma nota: "))
+    while nota not in range(0, 11):
+        print("Considere digitar uma nota válida.")
+        nota = float(input("Insira uma nota: "))
+
+    soma += nota
+    quantidade += 1
+
+    continuar = input("Deseja continuar? [S/N]: ").upper().strip()
+    while continuar not in ["S", "N"]:
+        print("Por favor, insira S para SIM e N para NÃO")
+        continuar = input("Deeseja continuar? [S/N]: ").upper().strip()
+
+    if continuar == "N":
+        break
+
+media = soma / quantidade
+
+print(f"A média das notas é de {media:.2f}")
+
+
+# ex025: Faça um programa que peça para n pessoas a sua idade, ao final o programa devera verificar se a média de idade da turma varia entre 0 e 25,26 e 60 e maior que 60; e então, dizer se a turma é jovem, adulta ou idosa, conforme a média calculada.
+soma = 0
+quantidade = 0
+
+while True:
+    idade = int(input("Insira a sua idade: "))
+
+    while idade not in range(0, 121):
+        print("Por favor, considere inserir uma idade válida.")
+        idade = int(input("Insira a sua idade: "))
+
+    soma += idade
+    quantidade += 1
+
+    continuar = input("Deseja continuar? [S/N] ").upper().strip()
+    while continuar not in ["S", "N"]:
+        print("Por favor, certifique-se de inserir S para SIM e N para NÃO")
+        continuar = input("Deeseja continuar? [S/N] ").upper().strip()
+
+    if continuar == "N":
+        break
+
+
+media = soma / quantidade
+
+if media >= 0 and media <= 25:
+    print("A média varia entre 0 a 25 - Turma Jovem")
+elif media > 25 and media <= 60:
+    print("A média varia entre 26 a 60 - Turma Adulta")
+elif media > 60:
+    print(f"A média varia dos 60+ - Turma Idosa")
+
