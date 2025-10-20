@@ -419,3 +419,168 @@ elif media > 25 and media <= 60:
 elif media > 60:
     print(f"A média varia dos 60+ - Turma Idosa")
 
+
+# ex026: Numa eleição existem três candidatos. Faça um programa que peça o número total de eleitores. Peça para cada eleitor votar e ao final mostrar o número de votos de cada candidato.
+eleitores = int(input("Qual o número total de eleitores?\n>>> "))
+while eleitores not in range(1, 101):
+    print("Insira um número adequado - Entre 1 a 100.")
+    eleitores = int(input("Qual o número total de eleitores?\n>>> "))
+
+votos = []
+for eleitor in range(eleitores):
+    print("Seja bem vindo, eleitor! Aqui está uma pequena lista dos candidatos que você pode votar: ")
+    print("1 para votar em José dos Campos")
+    print("2 para votar em Marcos do Peixaral")
+    print("3 para votar em Frangolina Victória Regina.")
+
+    voto = int(input("Insira o número do candidato:\n>>> "))
+    while voto not in range(1, 4):
+        print("Por favor, considere inserir um voto válido.")
+        voto = int(input("Insira o número do candidato:\n>>> "))
+
+    votos.append(voto)
+
+
+candidato1 = votos.count(1)
+candidato2 = votos.count(2)
+candidato3 = votos.count(3)
+
+print(f" RESULTADO DA VOTAÇÃO ".center(50, "-"))
+print(f"{'Candidato':<20} Qntd. Votos")
+print(f"{'1':<20} {candidato1}")
+print(f"{'2':<20} {candidato2}")
+print(f"{'3':<20} {candidato3}")
+
+if candidato1 > candidato2 and candidato1 > candidato3:
+    print("O candidato 1 é o vencedor!!!")
+elif candidato2 > candidato1 and candidato2 > candidato3:
+    print("O candidato 2 é o vencedor!!!")
+elif candidato3 > candidato1 and candidato3 > candidato2:
+    print("O candidato 3 é o vencedor!!!")
+elif candidato1 == candidato2 and candidato1 == candidato3:
+    print("Todos empataram.")
+elif candidato1 == candidato2 and candidato1 != candidato3:
+    print(f"Houve um empate entre candidato 1 e candidato 2.")
+elif candidato1 == candidato3 and candidato1 != candidato2:
+    print(f"Houve um empate entre candidato 1 e candidato 3.")
+elif candidato2 == candidato3 and candidato2 != candidato1:
+    print(f"Houve um empate entre candidato 2 e candidato 3.")
+
+
+# ex027: Faça um programa que calcule o número médio de alunos por turma. Para isto, peça a quantidade de turmas e a quantidade de alunos para cada turma. As turmas não podem ter mais de 40 alunos.
+turmas = int(input("Insira a quantidade de turmas:\n>>> "))
+while turmas not in range(1, 25):
+    print("Considere inserir um valor entre 1 a 25 turmas.")
+    turmas = int(input("Insira a quantidade de turmas:\n>>> "))
+
+total = 0
+
+for turma in range(turmas):
+    alunos = int(input(f"Quantos alunos há na turma {turma+1}?\n>>> "))
+    while alunos not in range(10, 41):
+        print("⚠️ A turma deve possui entre 10 a 40 alunos.")
+        alunos = int(input(f"Quantos alunos há na turma {turma+1}?\n>>> "))
+
+    total += alunos
+
+media = total / turmas
+
+print(f"A média de alunos por turma é de {media:.2f}")
+
+
+# ex028: Faça um programa que calcule o valor total investido por um colecionador em sua coleção de CDs e o valor médio gasto em cada um deles. O usuário deverá informar a quantidade de CDs e o valor para em cada um.
+quantidade_cds = int(input("Quantos CDs o colecionador possui? "))
+while quantidade_cds not in range(1, 1001):
+    print("Por favor, considere inserir uma quantidade válida.")
+    quantidade_cds = int(input("Quantos CDs o colecionador possui? "))
+
+total = 0
+
+for cd in range(quantidade_cds):
+    valor = float(input(f"Qual foi o valor em reais gasto pelo CD {cd+1}? R$"))
+    while valor not in range(0, 10**9):
+        print("Por favor, considere inserir um valor válido.")
+        valor = float(input(f"Qual foi o valor em reais gasto pelo CD {cd+1}? R$"))
+
+    total += valor
+
+media = total / quantidade_cds
+
+print(f"A média dos valores dos cds em reais é R${media:.2f}")
+
+
+# ex029: O Sr. Manoel Joaquim possui uma grande loja de artigos de R$ 1,99, com cerca de 10 caixas. Para agilizar o cálculo de quanto cada cliente deve pagar ele desenvolveu um tabela que contém o número de itens que o cliente comprou e ao lado o valor da conta. Desta forma a atendente do caixa precisa apenas contar quantos itens o cliente está levando e olhar na tabela de preços. Você foi contratado para desenvolver o programa que monta esta tabela de preços, que conterá os preços de 1 até 50 produtos, conforme o exemplo abaixo:
+
+# Lojas Quase Dois - Tabela de preços
+# 1 - R$ 1.99
+# 2 - R$ 3.98
+# ...
+# 50 - R$ 99.50
+print("Lojas Quase Dois - Tabela de preços")
+preco = 1.99
+
+for i in range(1, 51):
+    print(f"{i} - R$ {(preco * i):.2f}")
+
+
+# ex030: O Sr. Manoel Joaquim acaba de adquirir uma panificadora e pretende implantar a metodologia da tabelinha, que já é um sucesso na sua loja de 1,99. Você foi contratado para desenvolver o programa que monta a tabela de preços de pães, de 1 até 50 pães, a partir do preço do pão informado pelo usuário, conforme o exemplo abaixo:
+
+# Preço do pão: R$ 0.18
+# Panificadora Pão de Ontem - Tabela de preços
+# 1 - R$ 0.18
+# 2 - R$ 0.36
+# ...
+# 50 - R$ 9.00
+print("Panificadora Pão de Ontem - Tabela de preços")
+preco = 0.18
+
+for i in range(1, 51):
+    print(f"{i} - R$ {preco}")
+
+
+# ex031: O Sr. Manoel Joaquim expandiu seus negócios para além dos negócios de 1,99 e agora possui uma loja de conveniências. Faça um programa que implemente uma caixa registradora rudimentar. O programa deverá receber um número desconhecido de valores referentes aos preços das mercadorias. Um valor zero deve ser informado pelo operador para indicar o final da compra. O programa deve então mostrar o total da compra e perguntar o valor em dinheiro que o cliente forneceu, para então calcular e mostrar o valor do troco. Após esta operação, o programa deverá voltar ao ponto inicial, para registrar a próxima compra. A saída deve ser conforme o exemplo abaixo:
+
+# Lojas Tabajara
+# Produto 1: R$ 2.20
+# Produto 2: R$ 5.80
+# Produto 3: R$ 0
+# Total: R$ 9.00
+# Dinheiro: R$ 20.00
+# Troco: R$ 11.00
+print("Lojas Tabajara")
+total = 0
+i = 1
+while True:
+    preco = float(input(f"Produto {i}: R$ "))
+    while preco < 0:
+        print("Certifique-se de inserir um valor positivo.")
+        preco = float(input(f"Produto {i}: R$ "))
+
+    total += preco
+
+    if preco == 0:
+        break
+
+    i += 1
+
+print(f"Total: {total:.2f}")
+
+dinheiro = float(input("Dê o dinheiro ao caixa: R$ "))
+if dinheiro >= total:
+    troco = dinheiro - total
+    print(f"Total: {total:.2f}")
+    print(f"Dinheiro: {dinheiro:.2f}")
+    print(f"Troco: {troco:.2f}")
+else:
+    print("Oops, não é possível realizar o pagamento, pois o dinheiro é menor que o total da compra.")
+
+
+# ex032: Faça um programa que calcule o fatorial de um número inteiro fornecido pelo usuário. Ex.: 5!=5.4.3.2.1=120. A saída deve ser conforme o exemplo abaixo:
+# Fatorial de: 5 5! = 5 . 4 . 3 . 2 . 1 = 120
+numero = int(input("Insira o número que deseja descobrir o fatorial: "))
+fatorial = 1
+
+for i in range(1, numero+1):
+    fatorial *= i
+
+print(f"Fatorial de {numero}! = {" . ".join([str(x) for x in range(numero, 0, -1)])} = {fatorial}")
