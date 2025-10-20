@@ -584,3 +584,168 @@ for i in range(1, numero+1):
     fatorial *= i
 
 print(f"Fatorial de {numero}! = {" . ".join([str(x) for x in range(numero, 0, -1)])} = {fatorial}")
+
+
+# ex033: O Departamento Estadual de Meteorologia lhe contratou para desenvolver um programa que leia as um conjunto indeterminado de temperaturas, e informe ao final a menor e a maior temperaturas informadas, bem como a média das temperaturas.
+print(" Instruções ".center(50, "-"))
+print("Digite uma temperatura em graus celsius")
+print("Digite -0.1 para sair")
+print("".center(50, "-"))
+temperaturas = []
+contador = 1
+
+while True:
+    temperatura = float(input(f"Insira a temperatura {contador}: "))
+
+    if temperatura == -0.1:
+        break
+
+    temperaturas.append(temperatura)
+    contador += 1
+
+menor = min(temperaturas)
+maior = max(temperaturas)
+media = sum(temperaturas) / len(temperaturas)
+
+print(f"A menor temperatura registrada foi {menor:.2f} graus celsius.")
+print(f"A maior temperatura registrada foi {maior:.2f} graus celsius.")
+print(f"A média das temperaturas registradas é de {media:.2f} graus celsius.")
+
+
+# ex034: Os números primos possuem várias aplicações dentro da Computação, por exemplo na Criptografia. Um número primo é aquele que é divisível apenas por um e por ele mesmo. Faça um programa que peça um número inteiro e determine se ele é ou não um número primo.
+numero = int(input("Insira um número inteiro: "))
+
+divisores = [divisivel for divisivel in range(1, (numero // 2) + 1) if numero % divisivel == 0]
+
+if len(divisores) > 1:
+    print(f"{numero} não é um número primo (número composto)")
+else:
+    print(f"{numero} é um número primo.")
+
+
+# ex035: Encontrar números primos é uma tarefa difícil. Faça um programa que gera uma lista dos números primos existentes entre 1 e um número inteiro informado pelo usuário.
+numero = int(input("Insira um número inteiro: "))
+
+divisores = [divisivel for divisivel in range(1, (numero // 2) + 1) if numero % divisivel == 0]
+
+if len(divisores) > 1:
+    print(divisores)
+else:
+    print(f"{numero} não possui divisores, é um número primo.")
+
+
+# ex036: Desenvolva um programa que faça a tabuada de um número qualquer inteiro que será digitado pelo usuário, mas a tabuada não deve necessariamente iniciar em 1 e terminar em 10, o valor inicial e final devem ser informados também pelo usuário, conforme exemplo abaixo:
+# Montar a tabuada de: 5
+# Começar por: 4
+# Terminar em: 7
+# Vou montar a tabuada de 5 começando em 4 e terminando em 7:
+# 5 X 4 = 20
+# 5 X 5 = 25
+# 5 X 6 = 30
+# 5 X 7 = 35
+# Obs: Você deve verificar se o usuário não digitou o final menor que o inicial.
+numero = int(input("Montar a tabuada de: "))
+comeco = int(input("Começar por: "))
+termino = int(input("Terminar em: "))
+
+if comeco >= termino:
+    print("Opps, não é possível realizar a tabuada deste número.")
+else:
+    print(f"Vou montar a tabuada de {numero} começando em {comeco} e terminando em {termino}:")
+    for x in range(comeco, termino+1):
+        print(f"{numero} X {x} = {numero * x}")
+
+
+# ex037: Uma academia deseja fazer um senso entre seus clientes para descobrir o mais alto, o mais baixo, a mais gordo e o mais magro, para isto você deve fazer um programa que pergunte a cada um dos clientes da academia seu código, sua altura e seu peso. O final da digitação de dados deve ser dada quando o usuário digitar 0 (zero) no campo código. Ao encerrar o programa também deve ser informados os códigos e valores do clente mais alto, do mais baixo, do mais gordo e do mais magro, além da média das alturas e dos pesos dos clientes
+print(" INSTRUÇÕES ".center(50, "-"))
+print("No campo da altura, preencha no formato metro.centimetros (exemplos: 1.65, 1.87, 1.86, 1.84, 2.13)")
+print("No campo do peso, preencha no formato quilo.grama (ex: 87.50, 45.3, 125.65, 98.75, 56.75)")
+print("Digite \"0\" para sair.")
+alturas = []
+pesos = []
+
+while True:
+    codigo = int(input("Digite o seu código da academia: "))
+    if codigo == 0:
+        break
+
+    altura = float(input("Digite a sua altura: "))
+    peso = float(input("Digite o seu peso: "))
+
+    alturas.append(altura)
+    pesos.append(peso)
+
+if len(alturas) != 0:
+    mais_alto = max(alturas)
+    mais_baixo = min(alturas)
+    mais_gordo = max(pesos)
+    mais_magro = min(pesos)
+    media_alturas = sum(alturas) / len(alturas)
+
+    print(f"O cliente mais alto possui {mais_alto}cm.")
+    print(f"O cliente mais baixo possui {mais_baixo}cm.")
+    print(f"O cliente mais gordo possui {mais_gordo}kg.")
+    print(f"O cliente mais magro possui {mais_magro}kg.")
+    print(f"A média das alturas é de {media_alturas}cm.")
+    print(f"O peso dos clientes é de: {", ".join([f'{str(peso)}kg' for peso in pesos])}")
+else:
+    print("Não é possível realizar operações sem dados.")
+
+
+# ex038: Um funcionário de uma empresa recebe aumento salarial anualmente: Sabe-se que:
+
+# Esse funcionário foi contratado em 1995, com salário inicial de R$ 1.000,00;
+# Em 1996 recebeu aumento de 1,5% sobre seu salário inicial;
+# A partir de 1997 (inclusive), os aumentos salariais sempre correspondem ao dobro do percentual do ano anterior.
+# Faça um programa que determine o salário atual desse funcionário. Após concluir isto, altere o programa permitindo que o usuário digite o salário inicial do funcionário.
+# v1
+from datetime import date
+
+salario = 1000
+aumento = 0.015  # 1,5%
+ano_inicial = 1995
+ano_atual = date.today().year
+
+for ano in range(1996, ano_atual + 1):
+    salario += salario * aumento
+    aumento *= 2
+
+print(f"Salário atual em {ano_atual}: R$ {salario:.2f}")
+
+
+# v2
+from datetime import date
+
+salario = float(input("Digite o salário inicial do funcionário: R$ "))
+aumento = 0.015
+ano_inicial = 1995
+ano_atual = date.today().year
+
+for ano in range(1996, ano_atual + 1):
+    salario += salario * aumento
+    aumento *= 2
+
+print(f"Salário atual em {ano_atual}: R$ {salario:.2f}")
+
+
+# ex039: Faça um programa que leia dez conjuntos de dois valores, o primeiro representando o número do aluno e o segundo representando a sua altura em centímetros. Encontre o aluno mais alto e o mais baixo. Mostre o número do aluno mais alto e o número do aluno mais baixo, junto com suas alturas.
+numeros = []
+alturas = []
+for i in range(10):
+    numero_aluno = int(input("Digite o número do aluno: "))
+    if numero_aluno in numeros:
+        print("Este número de aluno já foi cadastrado. Considere-se inserir outro número.")
+        numero_aluno = int(input("Digite o número do aluno: "))
+
+    altura = float(input("Digite a altura do aluno: "))
+
+    numeros.append(numero_aluno)
+    alturas.append(altura)
+
+altura_mais_alto = max(alturas)
+altura_mais_baixo = min(alturas)
+numero_mais_alto = numeros[alturas.index(altura_mais_alto)]
+numero_mais_baixo = numeros[alturas.index(altura_mais_baixo)]
+
+print(f"O aluno com a maior altura possui {altura_mais_alto}cm e tem o número {numero_mais_alto}")
+print(f"O aluno com a menor altura possui {altura_mais_baixo}cm e tem o número {numero_mais_baixo}")
