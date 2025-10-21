@@ -5190,3 +5190,42 @@ if __name__ == "__main__":
     medico.hora_lanche("Arroz com Frango e Salada")  # Comendo Arroz com Frango e Salada
     medico.trocar_emprego("Taxista", "Dirige Carros")  # Seu novo emprego é Taxista e você Dirige Carros
     medico.ajuste_salarial(False, 90)  # Seu novo salário com a diminuição é 2446.5301800000016
+
+
+# ex289: Data por extenso. Faça um programa que solicite a data de nascimento (dd/mm/aaaa) do usuário e imprima a data com o nome do mês por extenso.
+# Data de Nascimento: 29/10/1973
+# Você nasceu em  29 de Outubro de 1973.
+meses = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"]
+nascimento = input("Digite a sua data de nascimento no formato dd/mm/aaaa: ")
+nascimento = nascimento.split("/")
+
+print(f"Você nasceu em {nascimento[0]} de {meses[int(nascimento[1])-1]} de {nascimento[2]}.")
+
+
+# ex290: Nome na vertical. Faça um programa que solicite o nome do usuário e imprima-o na vertical.
+# A
+# N
+# A
+nome = input("Digite o seu nome: ")
+
+for letra in nome:
+    print(letra)
+
+
+# ex291: Crie uma função que gere uma cor aleatória em hexadecimal.
+import random
+
+def generate_random_color() -> str:
+    letters = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "a", "b", "c", "d", "e", "f"]
+
+    color = ""
+    for _ in range(6):
+        color += str(random.choice(letters))
+
+    return f"A cor gerada foi: #{color}"
+
+
+if __name__ == "__main__":
+    print(generate_random_color())  # A cor gerada foi: #9284a6
+    print(generate_random_color())  # A cor gerada foi: #ca5d9b
+    print(generate_random_color())  # A cor gerada foi: #f58480
