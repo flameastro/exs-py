@@ -5048,3 +5048,145 @@ palavra = input("Digite uma palavra: ").strip()
 
 for i in range(1, 6):
     print(f"{palavra} " * i)
+
+
+# ex284: Crie um programa que peça ao usuário em que turno o usuário estuda. Considerando as seguintes opções:
+# Matutino -> "Bom Dia!"
+# Vespertino -> "Boa Tarde!"
+# Noturno -> "Boa Noite!"
+# Outro valor -> "Valor Inválido"
+turno = input("Digite o turno que você estuda (Matutino, Vespertino ou Noturno): ").capitalize()
+
+print("Bom dia!" if turno == "Matutino" else "Boa Tarde!" if turno == "Vespertino" else "Boa noite!" if turno == "Noturno" else "Valor inválido.")
+
+
+# ex285: Num cinema, após o filme, cada espectador respondeu a um questionário no qual constava sua idade e a sua opinião em relação ao filme:
+# Excelente -> 3;
+# Bom -> 2;
+# Regular -> 1
+# Crie um algoritmo que peça a idade e a opnião de 10 espectadores, e imprima:
+# A média das idades das pessoas que responderam Excelente;
+# A quantidade de pessoas que responderam regular;
+# A porcentagem de pessoas que responderam bom entre todos os expectadores analisados.
+excelente = []
+regular = []
+bom = []
+
+for i in range(10):
+    idade = int(input(f"Digite a idade da pessoa {i+1}: "))
+    while idade not in range(0, 121):
+        print("Por favor, digite um valor correto.")
+        idade = int(input(f"Digite a idade da pessoa {i+1}: "))
+
+    opniao = int(input(f"Digite a opnião da pessoa {i+1} (Excelente -> 3; Bom -> 2; Regular -> 1): "))
+    while opniao not in range(1, 4):
+        print("Por favor, digite um valor entre 1 a 3, de acordo com a classificação:\nExcelente -> 3\nBom -> 2\nRegular -> 1")
+        opniao = int(input(f"Digite a opnião da pessoa {i+1}: "))
+
+    if opniao == 3:
+        excelente.append(idade)
+    elif opniao == 2:
+        regular.append(idade)
+    else:
+        bom.append(idade)
+
+tamanho_excelente = 0
+soma_excelente = 0
+for idade in excelente:
+    soma_excelente += idade
+    tamanho_excelente += 1
+
+media_excelente = soma_excelente / tamanho_excelente
+
+quantidade_regular = 0
+for idade in regular:
+    quantidade_regular += 1
+
+
+quantidade_bom = 0
+for idade in bom:
+    quantidade_bom += 1
+
+porcentagem_bom = (quantidade_bom / 10) * 100
+
+print(f"A média das idades das pessoas que responderam excelente é {media_excelente}")
+print(f"A quantidade de pessoas que responderam regular é {quantidade_regular}")
+print(f"A porcentagem de pessoas que responderam bom é {porcentagem_bom}%")
+
+
+# ex286: Faça um programa que calcule as raízes de uma equação do segundo grau, na forma ax² + bx + c.
+# O programa deverá pedir os valores de a, b e c e fazer as consistências, informando ao usuário nas seguintes situações:
+
+#     Se o usuário informar o valor de A igual a zero, a equação não é do segundo grau e o programa não deve fazer pedir os demais valores, sendo encerrado;
+#     Se o delta calculado for negativo, a equação não possui raízes reais. Informe ao usuário e encerre o programa;
+#     Se o delta calculado for igual a zero a equação possui apenas uma raiz real; informe-a ao usuário;
+#     Se o delta for positivo, a equação possui duas raiz reais; informe-as ao usuário;
+import math
+
+
+A = int(input("Digite o valor de A: "))
+if A == 0:
+    print("O valor de A não pode ser 0.")
+else:
+    B = int(input("Digite o valor de B: "))
+    C = int(input("Digite o valor de C: "))
+
+    DELTA = B ** 2 - 4 * A * C
+    if DELTA < 0:
+        print("A equação não possui raízes reais.")
+    elif DELTA == 0:
+        print("A equação possui apenas uma raiz real.")
+    else:
+        print("A equação possui duas raiz reais.")
+
+        x = {(-B + math.sqrt(DELTA)) / (2 * A), (-B - math.sqrt(DELTA)) / (2 * A)}
+        print(f"O valor de DELTA é {DELTA}")
+        print(f"O Conjunto solução é {x}")
+
+
+# ex287: O diretor de uma escola precisa da sua ajuda. Ele não sabe exatamente qual o número total de estudantes da escola toda, mas ele sabe que existem 12 salas de aula. Ele preencheu 35 alunos em cada sala, e sobraram 7 alunos. Quantos alunos há naquela escola? Crie um programa que calcule o total de alunos que essa escola possui.
+salas = 12
+alunos_por_sala = 35
+
+alunos = (alunos_por_sala * salas) + 7
+print(f"Há aproximadamente {alunos} alunos nessa escola.")  # Há aproximadamente 427 alunos nessa escola.
+
+
+# ex288: Implemente a classe Funcionário. Deve haver como parâmetro nome e salário, e métodos de ver_salario, ajuste_salarial, trocar_emprego, hora_lanche.
+class Funcionario:
+    def __init__(self, nome: str, salario: float, saldo: float, emprego: str):
+        self.nome = nome
+        self.salario = salario
+        self.saldo = saldo
+        self.emprego = emprego
+
+    def ver_saldo(self):
+        print(f"Seu saldo é de {self.saldo}")
+
+    def trocar_emprego(self, emprego: str, acao: str):
+        self.emprego = emprego
+        print(f"Seu novo emprego é {self.emprego} e você {acao}")
+
+    def hora_lanche(self, comida: str):
+        print(f"Comendo {comida}")
+
+    def ajuste_salarial(self, aumento: bool, porcentagem: int):
+        if aumento:
+            self.salario += (self.salario * porcentagem) / 100
+            print(f"Seu novo salário com o aumento é {self.salario}")
+        else:
+            self.salario -= (self.salario * porcentagem) / 100
+            print(f"Seu novo salário com a diminuição é {self.salario}")
+
+
+if __name__ == "__main__":
+    programador = Funcionario("Carlos", 7600.45, 675853.57, "Programador")
+    programador.ver_saldo()  # Seu saldo é de 675853.57
+    programador.ajuste_salarial(True, 3)  # Seu novo salário com o aumento é 7828.4635
+    programador.hora_lanche("Arroz e Feijão com Ovo e Carne")  # Comendo Arroz e Feijão com Ovo e Carne
+
+    medico = Funcionario("Felipe", 23985.59, 2457894.34, "Médico")
+    medico.ajuste_salarial(True, 2)  # Seu novo salário com o aumento é 24465.3018
+    medico.hora_lanche("Arroz com Frango e Salada")  # Comendo Arroz com Frango e Salada
+    medico.trocar_emprego("Taxista", "Dirige Carros")  # Seu novo emprego é Taxista e você Dirige Carros
+    medico.ajuste_salarial(False, 90)  # Seu novo salário com a diminuição é 2446.5301800000016
