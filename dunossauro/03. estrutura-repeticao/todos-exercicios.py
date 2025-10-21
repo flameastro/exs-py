@@ -749,3 +749,197 @@ numero_mais_baixo = numeros[alturas.index(altura_mais_baixo)]
 
 print(f"O aluno com a maior altura possui {altura_mais_alto}cm e tem o número {numero_mais_alto}")
 print(f"O aluno com a menor altura possui {altura_mais_baixo}cm e tem o número {numero_mais_baixo}")
+
+
+# ex040: Foi feita uma estatística em cinco cidades brasileiras para coletar dados sobre acidentes de trânsito. Foram obtidos os seguintes dados:
+
+# Código da cidade;
+# Número de veículos de passeio (em 1999);
+# Número de acidentes de trânsito com vítimas (em 1999). Deseja-se saber:
+# Qual o maior e menor índice de acidentes de transito e a que cidade pertence;
+# Qual a média de veículos nas cinco cidades juntas;
+# Qual a média de acidentes de trânsito nas cidades com menos de 2.000 veículos de passeio.
+maior_indice = -1
+menor_indice = 999999
+cidade_maior = 0
+cidade_menor = 0
+total_veiculos = 0
+total_acidentes_menor2000 = 0
+cont_menor2000 = 0
+
+for i in range(5):
+    print(f"\n--- Cidade {i+1} ---")
+    codigo = int(input("Código da cidade: "))
+    veiculos = int(input("Número de veículos de passeio: "))
+    acidentes = int(input("Número de acidentes com vítimas: "))
+
+    total_veiculos += veiculos
+
+    if acidentes > maior_indice:
+        maior_indice = acidentes
+        cidade_maior = codigo
+
+    if acidentes < menor_indice:
+        menor_indice = acidentes
+        cidade_menor = codigo
+
+    if veiculos < 2000:
+        total_acidentes_menor2000 += acidentes
+        cont_menor2000 += 1
+
+media_veiculos = total_veiculos / 5
+if cont_menor2000 > 0:
+    media_acidentes_menor2000 = total_acidentes_menor2000 / cont_menor2000
+else:
+    media_acidentes_menor2000 = 0
+
+print("\n--- RESULTADOS ---")
+print(f"Maior índice de acidentes: {maior_indice} (Cidade {cidade_maior})")
+print(f"Menor índice de acidentes: {menor_indice} (Cidade {cidade_menor})")
+print(f"Média de veículos nas 5 cidades: {media_veiculos:.2f}")
+print(f"Média de acidentes nas cidades com menos de 2000 veículos: {media_acidentes_menor2000:.2f}")
+
+
+# ex041: Faça um programa que receba o valor de uma dívida e mostre uma tabela com os seguintes dados: valor da dívida, valor dos juros, quantidade de parcelas e valor da parcela.
+
+# Os juros e a quantidade de parcelas seguem a tabela abaixo:
+
+# Quantidade de Parcelas  % de Juros sobre o valor inicial da dívida
+# 1       0
+# 3       10
+# 6       15
+# 9       20
+# 12      25
+# Exemplo de saída do programa:
+
+# Valor da Dívida   Valor dos Juros     Quantidade de Parcelas      Valor da Parcela
+# R$ 1.000,00       0                   1                           R$  1.000,00
+# R$ 1.100,00       100                 3                           R$    366,00
+# R$ 1.150,00       150                 6                           R$    191,67
+divida = float(input("Valor da dívida: R$ "))
+
+parcelas_juros = [
+    (1, 0),
+    (3, 10),
+    (6, 15),
+    (9, 20),
+    (12, 25)
+]
+
+print("\nValor da Dívida\tValor dos Juros\tQuantidade de Parcelas\tValor da Parcela")
+
+for qtd_parcelas, juros in parcelas_juros:
+    valor_juros = divida * (juros / 100)
+    valor_total = divida + valor_juros
+    valor_parcela = valor_total / qtd_parcelas
+
+    print(f"R$ {valor_total:10.2f}\tR$ {valor_juros:10.2f}\t{qtd_parcelas:>10}\t\tR$ {valor_parcela:10.2f}")
+
+
+# ex042: Faça um programa que leia uma quantidade indeterminada de números positivos e conte quantos deles estão nos seguintes intervalos: [0-25], [26-50], [51-75] e [76-100]. A entrada de dados deverá terminar quando for lido um número negativo.
+numeros = []
+while True:
+    numero = int(input("Insira um número: "))
+    while numero > 100:
+        print("Por favor, insira um número menor que 100.")
+        numero = int(input("Insira um número: "))
+
+    if numero <= 0:
+        break
+
+    numeros.append(numero)
+
+media = sum(numeros) / len(numeros)
+print(f"Média: {media:.2f}")
+
+if media >= 0 and media <= 25:
+    print("Os números informados estão no intervalo de 0 a 25.")
+elif media >= 26 and media <= 50:
+    print("Os números informados estão no intervalo de 26 a 50.")
+elif media >= 51 and media <= 75:
+    print("Os números informados estão no intervalo de 51 a 75.")
+elif media >= 76 and media <= 100:
+    print("Os números informados estão no intervalo de 76 a 100.")
+
+
+# ex043: O cardápio de uma lanchonete é o seguinte:
+
+# Especificação   Código  Preço
+# Cachorro Quente 100     R$ 1,20
+# Bauru Simples   101     R$ 1,30
+# Bauru com ovo   102     R$ 1,50
+# Hambúrguer      103     R$ 1,20
+# Cheeseburguer   104     R$ 1,30
+# Refrigerante    105     R$ 1,00
+# Faça um programa que leia o código dos itens pedidos e as quantidades desejadas. Calcule e mostre o valor a ser pago por item (preço * quantidade).
+print("Especificação   Código  Preço")
+print("Cachorro Quente 100     R$ 1,20")
+print("Bauru Simples   101     R$ 1,30")
+print("Bauru com ovo   102     R$ 1,50")
+print("Hambúrguer      103     R$ 1,20")
+print("Cheeseburguer   104     R$ 1,30")
+print("Refrigerante    105     R$ 1,00")
+
+codigo = int(input("Digite o código do item: "))
+while codigo not in range(100, 106):
+    print("Por favor, insira um código válido.")
+    codigo = int(input("Digite o código do item: "))
+
+quantidade = int(input("Digite a quantidade do item: "))
+
+if codigo == 100 or codigo == 103:
+    preco = 1.20
+elif codigo == 101 or codigo == 104:
+    preco = 1.30
+elif codigo == 102:
+    preco = 1.50
+elif codigo == 105:
+    preco = 1
+
+print(f"O preço total do pedido é de R${preco * quantidade}")
+
+
+# ex044: Em uma eleição presidencial existem quatro candidatos. Os votos são informados por meio de código. Os códigos utilizados são:
+
+# 1 , 2, 3, 4  - Votos para os respectivos candidatos
+# (você deve montar a tabela ex: 1 - Jose/ 2- João/etc)
+# 5 - Voto Nulo
+# 6 - Voto em Branco
+# Faça um programa que calcule e mostre:
+
+# O total de votos para cada candidato;
+# O total de votos nulos;
+# O total de votos em branco;
+# A percentagem de votos nulos sobre o total de votos;
+# A percentagem de votos em branco sobre o total de votos. Para finalizar o conjunto de votos tem-se o valor zero.
+print(" INFORMAÇÕES SOBRE A ELEIÇÃO ".center(50, "-"))
+print("1 - João Matheus Araújo")
+print("2 - Felipe Gonçalves")
+print("3 - Matheus Cândido ")
+print("4 - Lucas Rafael dos Santos")
+print("5 - Voto Nulo")
+print("6 - Voto em Branco")
+
+votos = []
+
+while True:
+    codigo = int(input("Digite o código de acordo com o candidato desejado: "))
+    if codigo == 0:
+        break
+
+    while codigo not in range(1, 7):
+        print("Certifique-se de inserir um código válido: ")
+        codigo = int(input("Digite o código de acordo com o candidato desejado: "))
+
+    votos.append(codigo)
+
+print(f" RESULTADOS DA ELEIÇÃO ".center(50, "-"))
+print(f"Total de votos: {len(votos)}") # EXTRA
+print(f"Total de votos para o candidato 1 (João Matheus Araújo): {votos.count(1)}")
+print(f"Total de votos para o candidato 2 (Felipe Gonçalves): {votos.count(2)}")
+print(f"Total de votos para o candidato 3 (Matheus Cândido): {votos.count(3)}")
+print(f"Total de votos para o candidato 4 (Lucas Rafael dos Santos): {votos.count(4)}")
+print(f"Total de votos nulos: {votos.count(5)}")
+print(f"Total de votos em branco: {votos.count(6)}")
+print(f"Porcentagem de votos nulos sobre o total de votos: {((votos.count(5) / len(votos)) * 100):.2f}%")
+print(f"Porcentagem de votos em branco sobre o total de votos: {((votos.count(6) / len(votos)) * 100):.2f}%")
