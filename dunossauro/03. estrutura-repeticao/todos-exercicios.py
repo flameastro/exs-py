@@ -943,3 +943,204 @@ print(f"Total de votos nulos: {votos.count(5)}")
 print(f"Total de votos em branco: {votos.count(6)}")
 print(f"Porcentagem de votos nulos sobre o total de votos: {((votos.count(5) / len(votos)) * 100):.2f}%")
 print(f"Porcentagem de votos em branco sobre o total de votos: {((votos.count(6) / len(votos)) * 100):.2f}%")
+
+
+# ex045: Desenvolver um programa para verificar a nota do aluno em uma prova com 10 questões, o programa deve perguntar ao aluno a resposta de cada questão e ao final comparar com o gabarito da prova e assim calcular o total de acertos e a nota (atribuir 1 ponto por resposta certa). Após cada aluno utilizar o sistema deve ser feita uma pergunta se outro aluno vai utilizar o sistema. Após todos os alunos terem respondido informar:
+
+# Maior e Menor Acerto;
+# Total de Alunos que utilizaram o sistema;
+# A Média das Notas da Turma.
+# Gabarito da Prova:
+
+# 01 - E
+# 02 - A
+# 03 - C
+# 04 - B
+# 05 - B
+# 06 - C
+# 07 - D
+# 08 - A
+# 09 - B
+# 10 - E
+# Após concluir isto você poderia incrementar o programa permitindo que o professor digite o gabarito da prova antes dos alunos usarem o programa.
+gabarito = {
+    1: "E",
+    2: "A",
+    3: "C",
+    4: "B",
+    5: "B",
+    6: "C",
+    7: "D",
+    8: "A",
+    9: "B",
+    10: "E"
+}
+
+resultados = []
+while True:
+    nota = 0
+
+    for i in range(1, 11):
+        questao = input("Assinale a alternativa correta: ").upper().strip()
+        while questao not in ["A", "B", "C", "D", "E"]:
+            print("Assinale uma alternativa correta (A - E)")
+            questao = input("Assinale a alternativa correta: ").upper().strip()
+
+        if gabarito.get(i) == questao:
+            nota += 1
+
+    print(f"Sua nota foi {nota}.")
+    resultados.append(nota)
+
+    continuar = input("Deseja continuar? [S/N]: ").upper().strip()
+    while continuar not in ["S", "N"]:
+        print("Certifique-se de inserir um valor correto. S para SIM e N para NÃO")
+        continuar = input("Deseja continuar? [S/N]: ").upper().strip()
+
+    if continuar == "N":
+        break
+    elif continuar == "S":
+        continue
+
+print(" RESULTADOS DAS PROVAS ".center(50, "="))
+print(f"O maior acerto foi {max(resultados)}")
+print(f"O menor acerto foi {min(resultados)}")
+print(f"Total de alunos: {len(resultados)}")
+print(f"Media de notas da turma: {(sum(resultados) / len(resultados)):.2f}")
+print("Gabarito da prova")
+for questao, reposta in gabarito.items():
+    print(f"{questao} - {reposta}")
+
+
+# ex046: Em uma competição de salto em distância cada atleta tem direito a cinco saltos. No final da série de saltos de cada atleta, o melhor e o pior resultados são eliminados. O seu resultado fica sendo a média dos três valores restantes. Você deve fazer um programa que receba o nome e as cinco distâncias alcançadas pelo atleta em seus saltos e depois informe a média dos saltos conforme a descrição acima informada (retirar o melhor e o pior salto e depois calcular a média). Faça uso de uma lista para armazenar os saltos. Os saltos são informados na ordem da execução, portanto não são ordenados. O programa deve ser encerrado quando não for informado o nome do atleta. A saída do programa deve ser conforme o exemplo abaixo:
+
+# Atleta: Rodrigo Curvêllo
+
+# Primeiro Salto: 6.5 m
+# Segundo Salto: 6.1 m
+# Terceiro Salto: 6.2 m
+# Quarto Salto: 5.4 m
+# Quinto Salto: 5.3 m
+
+# Melhor salto:  6.5 m
+# Pior salto: 5.3 m
+# Média dos demais saltos: 5.9 m
+
+# Resultado final:
+# Rodrigo Curvêllo: 5.9 m
+atleta = input("Atleta: ")
+saltos = []
+
+for i in range(5):
+    salto = float(input(f"{['Primeiro', 'Segundo', 'Terceiro', 'Quarto', 'Quinto'][i]} Salto: "))
+    saltos.append(salto)
+
+saltos.sort()
+melhor = saltos[-1]
+pior = saltos[0]
+
+media = sum(saltos[1:4]) / 3
+
+print(f"Melhor salto: {melhor:.2f} m")
+print(f"Pior salto: {pior:.2f} m")
+print(f"Média dos demais saltos: {media:.2f} m")
+print(f"Resultado final: {media:.2f} m")
+
+
+# ex047: Em uma competição de ginástica, cada atleta recebe votos de sete jurados. A melhor e a pior nota são eliminadas. A sua nota fica sendo a média dos votos restantes. Você deve fazer um programa que receba o nome do ginasta e as notas dos sete jurados alcançadas pelo atleta em sua apresentação e depois informe a sua média, conforme a descrição acima informada (retirar o melhor e o pior salto e depois calcular a média com as notas restantes). As notas não são informados ordenadas. Um exemplo de saída do programa deve ser conforme o exemplo abaixo:
+
+# Atleta: Aparecido Parente
+# Nota: 9.9
+# Nota: 7.5
+# Nota: 9.5
+# Nota: 8.5
+# Nota: 9.0
+# Nota: 8.5
+# Nota: 9.7
+
+# Resultado final:
+# Atleta: Aparecido Parente
+# Melhor nota: 9.9
+# Pior nota: 7.5
+# Média: 9,04
+notas = []
+atleta = input("Atleta: ")
+for i in range(7):
+    nota = float(input("Nota: "))
+    notas.append(nota)
+
+notas.sort()
+melhor = notas[-1]
+pior = notas[0]
+media = sum(notas[1:6]) / 5
+
+print("Resultado final:")
+print(f"Atleta: {atleta}")
+print(f"Melhor nota: {melhor:.2f}")
+print(f"Pior nota: {pior:.2f}")
+print(f"Média: {media:.2f}")
+
+
+# ex048: Faça um programa que peça um numero inteiro positivo e em seguida mostre este numero invertido.
+# Exemplo:
+#   12376489 => 98467321
+numero = str(int(input("Digite um número inteiro: ")))
+print(f"{numero} => {numero[::-1]}")
+
+
+# ex049: Faça um programa que mostre os n termos da Série a seguir:
+# S = 1/1 + 2/3 + 3/5 + 4/7 + 5/9 + ... + n/m.
+# Imprima no final a soma da série.
+n = int(input("Quantos termos da série deseja mostrar? "))
+
+soma = 0
+den = 1
+
+print("Série: ", end="")
+
+for num in range(1, n + 1):
+    termo = num / den
+    print(f"{num}/{den}", end="")
+
+    if num < n:
+        print(" + ", end="")
+
+    soma += termo
+    den += 2
+
+print(f"\n\nSoma da série = {soma:.2f}")
+
+
+# ex050: Sendo H= 1 + 1/2 + 1/3 + 1/4 + ... + 1/N, Faça um programa que calcule o valor de H com N termos.
+n = int(input("Quantidade de Termos: "))
+
+h = 1
+for i in range(2, n+1):
+    print(h + (1 / i))
+    h += (1 / i)
+
+print(f"Valor de H = {h:.5f}")
+
+
+# ex051: Faça um programa que mostre os n termos da Série a seguir:
+# S = 1/1 + 2/3 + 3/5 + 4/7 + 5/9 + ... + n/m.
+# Imprima no final a soma da série.
+
+termos = int(input("Quantidade de termos: "))
+s = 0
+numerador = 1
+denominador = 1
+
+print("Série: ", end="")
+
+for i in range(termos):
+    if i < termos - 1:
+        print(f"{numerador}/{denominador}", end=" + ")
+    else:
+        print(f"{numerador}/{denominador}")
+    
+    s += numerador / denominador
+    numerador += 1
+    denominador += 2
+
+print(f"Soma da série: {s:.2f}")
