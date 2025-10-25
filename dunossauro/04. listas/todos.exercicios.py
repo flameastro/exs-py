@@ -153,3 +153,109 @@ for i in range(5):
     lista.append(lista2[i])
 
 print(lista)
+
+
+# ex011: Altere o programa anterior, intercalando 3 vetores de 10 elementos cada.
+lista1 = []
+lista2 = []
+lista3 = []
+
+for _ in range(5):
+    valor = input("Insira qualquer valor (vetor 1): ")
+    lista1.append(valor)
+
+for _ in range(5):
+    valor = input("Insira qualquer valor (vetor 2): ")
+    lista2.append(valor)
+
+for _ in range(5):
+    valor = input("Insira qualquer valor (vetor 2): ")
+    lista3.append(valor)
+
+lista = []
+for i in range(5):
+    lista.append(lista1[i])
+    lista.append(lista2[i])
+    lista.append(lista3[i])
+
+print(lista)
+
+
+# ex012: Foram anotadas as idades e alturas de 30 alunos. Faça um Programa que determine quantos alunos com mais de 13 anos possuem altura inferior à média de altura desses alunos.
+idades = []
+alturas = []
+
+for aluno in range(30):
+    idade = int(input("Idade: "))
+    while idade not in range(0, 80):
+        print("Por favor, insira um valor adequado.")
+        idade = int(input("Idade: "))
+
+    altura = float(input("Altura: "))
+    while altura < 0 or altura > 3:
+        print("Por favor, digite um valor para a altura que seja válido.")
+        altura = float(input("Altura: "))
+
+    idades.append(idade)
+    alturas.append(altura)
+
+media = sum(alturas) / 30
+altura_inferior = 0
+
+for i in range(30):
+    if idades[i] > 13 and alturas[i] < media:
+        altura_inferior += 1
+
+print(f"A quantidade total de alunos que possui mais de 13 anos e há uma altura inferior em relação à média é de: {altura_inferior}")
+
+
+# ex013: Faça um programa que receba a temperatura média de cada mês do ano e armazene-as em uma lista. Após isto, calcule a média anual das temperaturas e mostre todas as temperaturas acima da média anual, e em que mês elas ocorreram (mostrar o mês por extenso: 1 – Janeiro, 2 – Fevereiro, ...).
+meses = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"]
+temperaturas = []
+for i in range(12):
+    temperatura = float(input(f"Temperatura do mês {meses[i]}: "))
+    temperaturas.append(temperatura)
+
+media = sum(temperaturas) / 12
+print(f"A média das temperaturas é de {media:.2f}")
+
+i = 0
+while i < 12:
+    if temperaturas[i] > media:
+        print(meses[i])
+
+    i += 1
+
+
+# ex014: Utilizando listas, faça um programa que faça 5 perguntas para uma pessoa sobre um crime. As perguntas são:
+
+# "Telefonou para a vítima?"
+# "Esteve no local do crime?"
+# "Mora perto da vítima?"
+# "Devia para a vítima?"
+# "Já trabalhou com a vítima?"
+# O programa deve no final emitir uma classificação sobre a participação da pessoa no crime. Se a pessoa responder positivamente a 2 questões ela deve ser classificada como "Suspeita", entre 3 e 4 como "Cúmplice" e 5 como "Assassino". Caso contrário, ele será classificado como "Inocente".
+perguntas = ["Telefonou para a vítima?", "Esteve no local do crime?", "Mora perto da vítima?", "Devia para a vítima?", "Já trabalhou com a vítima?"]
+pontos = 0
+for x in range(5):
+    print(perguntas[x])
+    resposta = input("Responda: ").upper().strip()
+
+    while resposta not in ["S", "N"]:
+        print("Insira S para SIM e N para NÃO")
+        resposta = input("Responda: ").upper().strip()
+
+    if resposta == "S":
+        pontos += 1
+
+if pontos == 5:
+    classificacao = "Assasino"
+elif pontos >= 3:
+    classificacao = "Cúmplice"
+elif pontos > 1:
+    classificacao = "Suspeita"
+else:
+    classificacao = "Inocente"
+
+print(f"A pessoa possui {pontos} pontos.")
+print(f"Classificação: {classificacao}")
