@@ -5291,3 +5291,24 @@ if __name__ == "__main__":
     print(odd_positions([1, 2, 3, 4, 5]))  # [2, 4]
     print(odd_positions([10, 20, 30, 40, 50, 60, 70, 80, 90, 100]))  # [20, 40, 60, 80, 100]
     print(odd_positions([25, 12, 34, 5]))  # [12, 5]
+
+
+# ex295: Create a string made of the first, middle and last character
+# Write a program to create a new string made of an input string’s first, middle, and last character.
+# Given:
+# str1 = "James"
+# Expected Output:
+# Jms
+def first_middle_last(string):
+    if len(string) < 3:
+        return "The string need to have more than 3 letters."
+
+    return f"{string[0]}{string[len(string) // 2]}{string[-1]}"
+
+
+if __name__ == "__main__":
+    print(first_middle_last("James"))  # Jms
+    print(first_middle_last("MIT"))  # boi
+    print(first_middle_last("Harvard University"))  # Hny
+
+
