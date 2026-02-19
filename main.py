@@ -5277,7 +5277,7 @@ if __name__ == "__main__":
 # my_list = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
 # Expected output: [20, 40, 60, 80, 100]
 
-def oddPositions(array):
+def odd_positions(array):
     odd_array = []
 
     for x in range(len(array)):
@@ -5288,6 +5288,6 @@ def oddPositions(array):
 
 
 if __name__ == "__main__":
-    print(oddPositions([1, 2, 3, 4, 5]))  # [2, 4]
-    print(oddPositions([10, 20, 30, 40, 50, 60, 70, 80, 90, 100]))  # [20, 40, 60, 80, 100]
-    print(oddPositions([25, 12, 34, 5]))  # [12, 5]
+    print(odd_positions([1, 2, 3, 4, 5]))  # [2, 4]
+    print(odd_positions([10, 20, 30, 40, 50, 60, 70, 80, 90, 100]))  # [20, 40, 60, 80, 100]
+    print(odd_positions([25, 12, 34, 5]))  # [12, 5]
