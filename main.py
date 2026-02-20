@@ -5365,3 +5365,16 @@ if __name__ == "__main__":
     print(just_integers("I am 25 years and 10 months old"))  # 2510
     print(just_integers("My name is Mario"))  # 
     print(just_integers("With 21 years, Albert Einstein domains more than 90% of the physics"))  # 2190
+
+
+# ex298: As maçãs custam R$ 1.50 cada se forem compradas menos de uma dúzia, e R$ 1.30 se forem compradas pelo menos 12. Escreva um programa que leia o número de maçãs compradas, calcule e escreva o custo total da compra.
+macas = int(input("Digite o total de maçãs que foram compradas: "))
+
+if macas < 12:
+    preco = 1.50
+else:
+    preco = 1.30
+
+total = preco * macas
+
+print(f"O total é R${total}")
