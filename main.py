@@ -6513,3 +6513,19 @@ if __name__ == "__main__":
     print(soma_arrays([1, 2, 3, 4, 5], [1, 2, 3, 4, 5]))  # [2, 4, 6, 8, 10]
     print(soma_arrays([2, 5, 4], [3, 2, 2]))  # [5, 7, 6]
     print(soma_arrays([5, 4, 7, 8, 9], [2, -1, 0]))  # As funções não podem ter tamanho diferentes
+
+
+# ex343: Crie uma função que tenha um número como parâmetro e retorne uma lista com cada número desse número em uma lista ordenada por ordem crescente
+def orderna_numeros(n):
+    narr = []
+
+    for x in str(n):
+        narr.append(int(x))
+
+    return list(sorted(narr))
+
+
+if __name__ == "__main__":
+    print(orderna_numeros(753))  # [3, 5, 7]
+    print(orderna_numeros(312313))  # [1, 1, 2, 3, 3, 3]
+    print(orderna_numeros(4763))  # [3, 4, 6, 7]
