@@ -1,4 +1,4 @@
-# Crie uma função que receba um valor em horas como parâmetro no formato HH:MM:SS e retorne a soma dos segundos das horas, minutos e segundos
+# ex345: Crie uma função que receba um valor em horas como parâmetro no formato HH:MM:SS e retorne a soma dos segundos das horas, minutos e segundos
 def time_conversor(hour):
     hour = hour.split(":")
     return (int(hour[0]) * 3600) + (int(hour[1]) * 60) + int(hour[0])
