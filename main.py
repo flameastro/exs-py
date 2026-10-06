@@ -6550,3 +6550,424 @@ if __name__ == "__main__":
     print(time_conversor("16:04:33"))
     print(time_conversor("01:00:00"))
     print(time_conversor("12:54:32"))
+
+
+# ex346: Faça um programa que leia e armazene em um vetor
+# uma sequência de inteiros. Em seguida o programa deve ler
+# uma sequência de inteiros informados pelo usuário e, para cada um
+# deles, dizer se ele pertence ou não ao vetor armazenado previamente.
+vetor = []
+
+print("Inserindo elementos no vetor")
+for i in range(10):
+    valor = int(input("Valor: "))
+    vetor.append(valor)
+
+print("Verificando elementos")
+for i in range(10):
+    valor = int(input("Valor: "))
+    pertence = False
+
+    for j in range(len(vetor)):
+        if valor == vetor[j]:
+            pertence = True
+            pos = j
+            break
+
+    if pertence:
+        print(f"{valor} pertence ao vetor na posição {pos} (primeira ocorrência)")
+    else:
+        print(f"{valor} não pertence ao vetor")
+
+
+# ex347: Crie uma função em que receba um vetor de inteiros de tamanho n e devolva o valor True se o vetor estiver ordenado e False em caso contrário.
+def esta_ordenado(v):
+    va = v.copy()
+
+    for x in range(len(v)):
+        for item in range(len(v) - 1):
+            if v[item] > v[item + 1]:
+                troca = v[item]
+                v[item] = v[item + 1]
+                v[item + 1] = troca
+
+    return v == va
+
+
+print(esta_ordenado([1, 2, 3]))
+print(esta_ordenado([5, 4, 1, 2, 7]))
+print(esta_ordenado([1, 5, 4, 1, 2, 3]))
+
+
+# ex348: Faça um programa que leia duas sequências de n inteiros em dois vetores distintos, digamos, v e w e verifique se os dois vetores são idênticos.
+n = 10
+v = []
+w = []
+
+print("Vetor v")
+for i in range(n):
+    valor = input("Valor: ")
+    v.append(valor)
+
+print("Vetor w")
+for i in range(n):
+    valor = input("Valor: ")
+    w.append(valor)
+
+# Verificando vetores
+identicos = True
+
+for i in range(len(v)):
+    if v[i] != w[i]:
+        identicos = False
+
+if identicos:
+    print("São idênticos")
+else:
+    print("São diferentes")
+
+
+# ex349: Faça um programa que leia duas sequências de inteiros, não necessariamente contendo a mesma quantidade de números. Seu programa deverá:
+# - Dizer se a segunda sequência está contida na primeira.  
+#   Exemplo:  
+#   `v1: 7 3 2 3 2 6 4 7`  
+#   `v2: 3 2 6`  
+#   Saída: sim
+# - Construir um terceiro vetor, sem destruir os originais, que é a concatenação do primeiro com o segundo.  
+#   Exemplo:  
+#   `v1: 7 3 2 6`  
+#   `v2: 5 1 8 4 9`  
+#   Saída: 7 3 2 6 5 1 8 4 9
+# - Ordenar os elementos do terceiro vetor e, em seguida, imprimir todos os números em ordem crescente.  
+#   Exemplo:  
+#   `v1: 7 3 2 6`  
+#   `v2: 5 1 8 4 9`  
+#   Saída: 1 2 3 4 5 6 7 8 9
+v = []
+w = []
+
+print("--- Vetor v ---")
+while True:
+    valor = int(input("Valor: "))
+
+    if valor == 0:
+        break
+
+    v.append(valor)
+
+print("--- Vetor w ---")
+while True:
+    valor = int(input("Valor: "))
+
+    if valor == 0:
+        break
+
+    w.append(valor)
+
+
+# 1 - Dizer se a segunda sequência está contida na primeira
+def versao1():
+    contido = True
+
+    for i in range(len(w)):
+        if not w[i] in v and w.count(i) > v.count(i):
+            contido = False
+
+    if contido:
+        print("O vetor w está contido no vetor v")
+    else:
+        print("O vetor w não está contido no vetor v")
+
+# 2 - Construir um terceiro vetor, sem destruir os originais, que é a concatenação do primeiro com o segundo
+def versao2():
+    k = []
+
+    for x in v:
+        k.append(x)
+
+    for x in w:
+        k.append(x)
+
+    print(k)
+
+# 3 - Ordenar os elementos do terceiro vetor e, em seguida, imprimir todos os números em ordem crescente
+def versao3():
+    k = []
+
+    for x in v:
+        k.append(x)
+
+    for x in w:
+        k.append(x)
+
+    for x in range(len(k)):
+        for item in range(len(k) - 1):
+            if k[item] > k[item + 1]:
+                troca = k[item]
+                k[item] = k[item + 1]
+                k[item + 1] = troca
+
+    print(k)
+
+
+# ex350: Faça um programa em que leia dois vetores de números inteiros e descubra se um
+# deles é permutação do outro, isto é, se eles tem os mesmos elementos, ainda
+# que em ordem diferente. A quantidade de elementos lidos em cada vetor é no
+# máximo 100, e cada sequ^encia termina quando o valor 0 é digitado. Por exemplo:
+# [2; 2; 0; 3; 4] e [2; 2; 0; 3; 4]: sim.
+# [2; 2; 0; 3; 4] e [4; 3; 2; 0; 2]: sim.
+# [2; 2; 0; 3; 4] e [4; 3; 4; 0; 2]: não.
+# [3; 0; 5] e [3; 0; 5; 3]: n~ao.
+# Implemente duas versões deste problema:
+# Ordenando os vetores para em seguida compará-los;
+# Sem ordenar os vetores;
+v = []
+w = []
+
+n = 0
+print("Vetor v")
+for i in range(101):
+    valor = int(input("Valor: "))
+
+    if valor == 0:
+        break
+
+    v.append(valor)
+    n += 1
+
+print("Vetor w")
+for i in range(n):
+    valor = int(input("Valor: "))
+
+    if valor == 0:
+        break
+
+    w.append(valor)
+
+
+# Versão 1 - Ordenando os vetores para em seguida compará-los
+def versao1():
+    # Ordena v
+    for _ in range(len(v)):
+        for item in range(len(v) - 1):
+            if v[item] > v[item + 1]:
+                troca = v[item]
+                v[item] = v[item + 1]
+                v[item + 1] = troca
+
+
+    # Ordena w
+    for _ in range(len(w)):
+        for item in range(len(w) - 1):
+            if w[item] > w[item + 1]:
+                troca = w[item]
+                w[item] = w[item + 1]
+                w[item + 1] = troca
+
+
+    # Verificando vetores
+    identicos = True
+
+    for i in range(len(v)):
+        if v[i] != w[i]:
+            identicos = False
+
+    if identicos:
+        print("São idênticos")
+    else:
+        print("São diferentes")
+
+# Versão 2 - Sem ordenar os vetores
+def versao2():
+    d = {}
+
+    for i in range(len(v)):
+        if d.get(v[i]):
+            d[v[i]] += 1
+        else:
+            d[v[i]] = 1
+
+        if d.get(w[i]):
+            d[w[i]] += 1
+        else:
+            d[w[i]] = 1
+
+
+    # Percorre e verifica se existe uma contagem para determinado elemento que seja ímpar. Se tiver -> Quer dizer que existe apenas um elemento entre v e w, atuomaticamente ambos são diferentes
+    identicos = True
+    for value in d.values():
+        if value % 2 == 1:
+            identicos = False
+
+    if identicos:
+        print("São identicos")
+    else:
+        print("São diferentes")
+
+
+# ex351: Aproveitando as soluções dos problemas anteriores, escreva um programa em que leia dois vetores de inteiros `v` e `w`, de dimensões `m` e `n` respectivamente, verifique se eles estão ordenados, ordene-os em caso contrário e, em seguida, imprima a intercalação dos dois.
+# Exemplo de intercalação:
+# `v: 1 4 6 9`  
+# `w: 2 3 5 7`
+# Saída:
+# `1, 2, 3, 4, 5, 6, 7, 9.`
+
+def ler_vetor(nome_vetor, col):
+    print(nome_vetor)
+    vetor = []
+
+    for l in range(col):
+        valor = int(input("Valor: "))
+        vetor.append(valor)
+
+    return vetor
+
+
+def esta_ordenado(vetor):
+    for i in range(len(vetor)-1):
+        if vetor[i] > vetor[i+1]:
+            return False
+
+    return True
+
+
+def intercalacao(vetor1, vetor2):
+    vetor_intercalado = vetor1 + vetor2
+    return vetor_intercalado
+
+
+def ordenacao(vetor):
+    for x in range(len(vetor)):
+        for item in range(len(vetor) - 1):
+            if vetor[item] > vetor[item + 1]:
+                troca = vetor[item]
+                vetor[item] = vetor[item + 1]
+                vetor[item + 1] = troca
+
+    return vetor
+
+
+
+
+m = int(input("Tamanho: "))
+v, w = ler_vetor("v", m), ler_vetor("w", m)
+
+vetor_intercalado = intercalacao(v, w)
+
+if not esta_ordenado(vetor_intercalado):
+    vetor_intercalado = ordenacao(vetor_intercalado)
+
+print(vetor_intercalado)
+
+
+# ex352: Faça um programa em que leia uma sequência de 10 letras (caracteres de A a Z), as armazene em um vetor de 10 posições e imprima a lista de letras repetidas no vetor.
+# Sendo assim, para os dados:
+# `A J G A D F G A A B`
+# a saída deve ser:
+# `A G.` 
+letras = []
+repetidas = []
+
+for i in range(10):
+    valor = input(f"{i}: ")
+    letras.append(valor)
+
+    if letras.count(valor) > 1 and valor not in repetidas:
+        repetidas.append(valor)
+
+print(repetidas)
+
+
+# ex353: Escreva um programa em que leia uma sequência de código de operação e valor, onde o código de operação é um inteiro com os seguintes valores
+# - `0` (zero): fim
+# - `1` (um): inserção
+# - `2` (dois): remoção
+# O valor lido é um real que deve ser inserido em um vetor (caso a operação seja 1), ou removido do vetor (caso a operação seja 2).
+# As inserções no vetor devem ser realizadas de forma que o vetor esteja sempre ordenado.
+# No final do programa o vetor resultante deve ser impresso.
+# ### Detalhamento:
+# - a quantidade máxima de valores que pode ser inserida é 100;
+# - se a quantidade máxima for ultrapassada o programa deve dar uma mensagem de erro;
+# - se for requisitada a remoção de um número não existente o programa deve dar uma mensagem de erro;
+# - se o código de operação for inválido o programa deve continuar lendo um novo código até que ele seja 0 (zero), 1 (um) ou 2 (dois).
+# ### Exemplo de execução:
+# Entre com operacao (0=fim, 1=insercao, 2=remocao): 1
+# Valor: 45.3
+# Entre com operacao (0=fim, 1=insercao, 2=remocao): 1
+# Valor: 34.3
+# Entre com operacao (0=fim, 1=insercao, 2=remocao): 1
+# Valor: 40.8
+# Entre com operacao (0=fim, 1=insercao, 2=remocao): 2
+# Valor: 34.3
+# Entre com operacao (0=fim, 1=insercao, 2=remocao): 0
+# Vetor resultante
+# 40.8 45.3
+# Bonus: 3 = mostrar
+vetor = []
+
+def verifica_operacao(operacao):
+    return operacao in range(0, 4)  # -> operacao == 0/1/2/3?
+
+
+def adicionar(vetor, elemento):
+    tamanho = len(vetor)
+
+    if tamanho == 0:
+        novo_vetor = [None] * 1
+        novo_vetor[0] = elemento
+        return novo_vetor
+
+    novo_vetor = [None] * (tamanho + 1)
+
+    for i in range(len(vetor)):
+        novo_vetor[i] = vetor[i]
+
+    novo_vetor[i+1] = elemento
+    return novo_vetor
+
+
+
+
+def encontrar(vetor, elemento):
+    for i in range(len(vetor)):
+        if vetor[i] == elemento:
+            return i
+
+    return -1
+
+
+def remover(vetor, elemento):
+    indice = encontrar(vetor, elemento)
+    if indice == -1:
+        return vetor
+
+    novo_vetor = []
+
+    for i in range(len(vetor)):
+        if indice != i:
+            novo_vetor.append(vetor[i])
+
+    return novo_vetor
+
+
+def mostrar(vetor):
+    return vetor
+
+
+while True:
+    operacao = int(input("Entre com operacao (0=fim, 1=insercao, 2=remocao, 3=mostrar): "))
+    while not verifica_operacao(operacao):
+        operacao = int(input("Entre com operacao (0=fim, 1=insercao, 2=remocao, 3=mostrar): "))
+        verifica_operacao(operacao)
+
+    if operacao == 0:
+        break
+    elif operacao == 1:
+        valor = float(input("Valor: "))
+        vetor = adicionar(vetor, valor)
+    elif operacao == 2:
+        valor = float(input("Valor: "))
+        vetor = remover(vetor, valor)
+    elif operacao == 3:
+        
+        print(mostrar(vetor))
